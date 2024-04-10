@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">aratkillo</string>
+    <string name="facebook_app_id">1325352848060648</string>
+    <string name="fb_login_protocol_scheme">fb1325352848060648</string>
+    <string name="facebook_client_token">b311586668c2d07179c485d97a5a30dc</string>
+</resources>

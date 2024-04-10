@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1006705368856",
+    "project_id": "aratkillo-1bd43",
+    "storage_bucket": "aratkillo-1bd43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006705368856:android:67aa35fb3e12adc653886d",
+        "android_client_info": {
+          "package_name": "com.example.ampedmedia_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPKBveOboNK-gZwtWB3WriIxFw3qeucXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006705368856-pde1jponfbgeptfehhoq0ookvs32q97b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
