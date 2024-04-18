@@ -94,7 +94,7 @@ class All_AudioBooksState extends State<AllPodcasts> {
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
                                     headers: {},
-                                    '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].id}')),
+                                    '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].material_image}')),
                           ),
                           Text('${snapshot.data![index].title}'),
                           Row(

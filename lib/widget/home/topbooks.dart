@@ -111,7 +111,7 @@ class _TopBooksState extends State<TopBooks> {
                                           child: Image(
                                             fit: BoxFit.scaleDown,
                                             image: NetworkImage(
-                                                '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].id}'),
+                                                '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].material_image}'),
                                           ),
                                         ),
                                         Container(

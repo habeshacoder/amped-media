@@ -89,12 +89,6 @@ class _MoreFromAuthorState extends State<MoreFromAuthor> {
                               scrollDirection: Axis.horizontal,
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
-                                // String date =
-                                //     snapshot.data![index].first_published_at;
-                                // ;
-                                // DateTime dateTime = DateTime.parse(date);
-                                // String formattedDate =
-                                // DateFormat('dd MMM yy').format(dateTime);
                                 return InkWell(
                                   onTap: () {
                                     Navigator.of(context)

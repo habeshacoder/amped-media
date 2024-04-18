@@ -313,19 +313,16 @@ class _CreateProfileState extends State<CreateProfile> {
     setState(() {
       isSendingCreateProfileRequest = true;
     });
-    try {
-      final token = Provider.of<Auth>(context, listen: false).token;
-      if (token == null) {
-        throw 'you are not authenticated';
-      }
-      print('........................................now');
-      isContinue = await Provider.of<ProfileProvider>(context, listen: false)
-          .createProfile(profileData, token);
-    } catch (error) {
-      print(
-          'object...........................................................$error');
-      showalert('$error');
+
+    final token = Provider.of<Auth>(context, listen: false).token;
+    if (token == null) {
+      throw 'you are not authenticated';
     }
+    print('........................................now');
+    isContinue = await Provider.of<ProfileProvider>(context, listen: false)
+        .createProfile(profileData, token);
+    print('after creating profile/////////////////////////');
+
     setState(() {
       isSendingCreateProfileRequest = false;
     });

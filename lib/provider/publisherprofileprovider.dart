@@ -31,49 +31,43 @@ class PublisherProfileProvder with ChangeNotifier {
     File profileImage = profileData["profile"];
     File coverImage = profileData["cover"];
 
-    try {
-      final formDataRequest = http.MultipartRequest('POST', Uri.parse(url));
-      final profileImageMultipart = http.MultipartFile(
-        'image',
-        profileImage.readAsBytes().asStream(),
-        profileImage.lengthSync(),
-        filename: profileImage.path.split('/').last,
-      );
-      final coverMultipart = http.MultipartFile(
-        'cover',
-        coverImage.readAsBytes().asStream(),
-        coverImage.lengthSync(),
-        filename: coverImage.path.split('/').last,
-      );
-      formDataRequest.files.add(profileImageMultipart);
-      formDataRequest.files.add(coverMultipart);
-      formDataRequest.fields['name'] = profileData["name"];
-      formDataRequest.fields['description'] = profileData["description"];
-      formDataRequest.fields['sex'] = profileData["sex"];
-      formDataRequest.fields['date_of_birth'] =
-          profileData["dateOfBirth"].toString();
-      formDataRequest.headers['Authorization'] = 'Bearer $token';
-      //send to back end
-      final response = await formDataRequest.send();
-      final responseBody = await response.stream.transform(utf8.decoder).join();
-      final responseBodyDecoded = jsonDecode(responseBody);
-      print('response:................................${responseBody}');
-      //check response
-      final checkresponsebody = jsonDecode(responseBody);
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        Iscontinue = true;
-      } else {
-        throw 'faild to create seller profile';
-      }
-    } catch (error) {
-      throw error;
+    final formDataRequest = http.MultipartRequest('POST', Uri.parse(url));
+    final profileImageMultipart = http.MultipartFile(
+      'image',
+      profileImage.readAsBytes().asStream(),
+      profileImage.lengthSync(),
+      filename: profileImage.path.split('/').last,
+    );
+    final coverMultipart = http.MultipartFile(
+      'cover',
+      coverImage.readAsBytes().asStream(),
+      coverImage.lengthSync(),
+      filename: coverImage.path.split('/').last,
+    );
+    formDataRequest.files.add(profileImageMultipart);
+    formDataRequest.files.add(coverMultipart);
+    formDataRequest.fields['name'] = profileData["name"];
+    formDataRequest.fields['description'] = profileData["description"];
+    formDataRequest.fields['sex'] = profileData["sex"];
+    formDataRequest.fields['date_of_birth'] =
+        profileData["dateOfBirth"].toString();
+    formDataRequest.headers['Authorization'] = 'Bearer $token';
+    //send to back end
+    final response = await formDataRequest.send();
+    final responseBody = await response.stream.transform(utf8.decoder).join();
+    final responseBodyDecoded = jsonDecode(responseBody);
+    print('response:................................${responseBody}');
+    //check response
+    final checkresponsebody = jsonDecode(responseBody);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      Iscontinue = true;
     }
+
     return Iscontinue;
   }
 
   //get profile information
   Future<PublisherProfileModel> getMe(String? token) async {
-    // final auth = Auth();
     if (token == null) {
       print('token is null to do getme method...........');
       throw Exception('unauthorized access');

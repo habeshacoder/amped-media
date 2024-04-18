@@ -213,23 +213,21 @@ class materialCreationProvider with ChangeNotifier {
     print('materilid:...........:${id}');
     final url = '$baseUrl/material/${id}';
     final material;
-    try {
-      final response = await http.get(
-        Uri.parse(url),
-        headers: <String, String>{
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $token',
-        },
-      );
-      List<MaterialModel> loadedMaterials = [];
 
-      final extractedResponse = json.decode(response.body);
-      print('extra..............${extractedResponse}');
-      material = MaterialModel.fromJson(extractedResponse);
-      print(loadedMaterials);
-    } catch (error) {
-      throw error;
-    }
+    final response = await http.get(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    List<MaterialModel> loadedMaterials = [];
+
+    final extractedResponse = json.decode(response.body);
+    print('extra..............${extractedResponse}');
+    material = MaterialModel.fromJson(extractedResponse, isUpload: true);
+    print(loadedMaterials);
+
     return material;
   }
 
@@ -397,68 +395,66 @@ class materialCreationProvider with ChangeNotifier {
     File materialFile = materialData["material"];
     File materialImages =
         materialData["images"] != null ? materialData["images"] : null;
-    try {
-      final formDataRequest = http.MultipartRequest('POST', Uri.parse(url));
-      //create a multipart
-      final materialProfile = http.MultipartFile(
-        'profile',
-        profileImage.readAsBytes().asStream(),
-        profileImage.lengthSync(),
-        filename: profileImage.path.split('/').last,
-      );
-      final coverMultipart = http.MultipartFile(
-        'cover',
-        coverImage.readAsBytes().asStream(),
-        coverImage.lengthSync(),
-        filename: coverImage.path.split('/').last,
-      );
-      final previewMultiPart = http.MultipartFile(
-        'preview',
-        preview.readAsBytes().asStream(),
-        preview.lengthSync(),
-        filename: preview.path.split('/').last,
-      );
-      final materialFileMultiPart = http.MultipartFile(
-        'material',
-        materialFile.readAsBytes().asStream(),
-        materialFile.lengthSync(),
-        filename: materialFile.path.split('/').last,
-      );
-      final materialImagesMultipart = http.MultipartFile(
-        'images',
-        materialImages.readAsBytes().asStream(),
-        materialImages.lengthSync(),
-        filename: materialImages.path.split('/').last,
-      );
-      print('begin uploading add files multipar.......');
 
-      //add files
-      formDataRequest.files.add(materialProfile);
-      formDataRequest.files.add(coverMultipart);
-      formDataRequest.files.add(previewMultiPart);
-      formDataRequest.files.add(materialFileMultiPart);
-      formDataRequest.files.add(materialImagesMultipart);
+    final formDataRequest = http.MultipartRequest('POST', Uri.parse(url));
+    //create a multipart
+    final materialProfile = http.MultipartFile(
+      'profile',
+      profileImage.readAsBytes().asStream(),
+      profileImage.lengthSync(),
+      filename: profileImage.path.split('/').last,
+    );
+    final coverMultipart = http.MultipartFile(
+      'cover',
+      coverImage.readAsBytes().asStream(),
+      coverImage.lengthSync(),
+      filename: coverImage.path.split('/').last,
+    );
+    final previewMultiPart = http.MultipartFile(
+      'preview',
+      preview.readAsBytes().asStream(),
+      preview.lengthSync(),
+      filename: preview.path.split('/').last,
+    );
+    final materialFileMultiPart = http.MultipartFile(
+      'material',
+      materialFile.readAsBytes().asStream(),
+      materialFile.lengthSync(),
+      filename: materialFile.path.split('/').last,
+    );
+    final materialImagesMultipart = http.MultipartFile(
+      'images',
+      materialImages.readAsBytes().asStream(),
+      materialImages.lengthSync(),
+      filename: materialImages.path.split('/').last,
+    );
+    print('begin uploading add files multipar.......');
 
-      formDataRequest.headers['Authorization'] = 'Bearer $token';
-      //send to back end
+    //add files
+    formDataRequest.files.add(materialProfile);
+    formDataRequest.files.add(coverMultipart);
+    formDataRequest.files.add(previewMultiPart);
+    formDataRequest.files.add(materialFileMultiPart);
+    formDataRequest.files.add(materialImagesMultipart);
 
-      final response = await formDataRequest.send();
-      print('Upload progress...................: $response');
+    formDataRequest.headers['Authorization'] = 'Bearer $token';
+    //send to back end
 
-      final responseBody = await response.stream.transform(utf8.decoder).join();
-      final responseBodyDecoded = jsonDecode(responseBody);
-      print(
-          'response in material datas :.............${response.statusCode}...${responseBody}');
-      //check response
-      final checkresponsebody = jsonDecode(responseBody);
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        Iscontinue = true;
-      } else {
-        throw 'faild to create seller profile';
-      }
-    } catch (error) {
-      throw error;
+    final response = await formDataRequest.send();
+    print('Upload progress...................: $response');
+
+    final responseBody = await response.stream.transform(utf8.decoder).join();
+    final responseBodyDecoded = jsonDecode(responseBody);
+    print(
+        'response in material datas :.............${response.statusCode}...${responseBody}');
+    //check response
+    final checkresponsebody = jsonDecode(responseBody);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      Iscontinue = true;
+    } else {
+      throw 'faild to create seller profile';
     }
+
     return Iscontinue;
   }
 }

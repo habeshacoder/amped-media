@@ -132,7 +132,7 @@ class _PodcastDetailViewState extends State<PodcastDetailView> {
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
                                     headers: {},
-                                    '${BackEndUrl.url}/material/material_cover/${widget.book.id}'),
+                                    '${BackEndUrl.url}/material/material_cover/${widget.book.material_image}'),
                               ),
                             ),
                             Positioned(

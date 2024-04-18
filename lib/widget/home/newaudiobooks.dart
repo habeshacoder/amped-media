@@ -101,7 +101,7 @@ class _NewAudioBooksState extends State<NewAudioBooks> {
                                           fit: BoxFit.cover,
                                           image: NetworkImage(
                                               headers: {},
-                                              '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].id}')),
+                                              '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].material_image}')),
                                     ),
                                     if (snapshot.data![index].title != null)
                                       Text('${snapshot.data![index].title}'),

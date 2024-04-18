@@ -21,45 +21,41 @@ class ProfileProvider with ChangeNotifier {
     final url = '$baseUrl/profiles';
     File profileImage = profileData["profileImage"];
     File coverImage = profileData["cover"];
-    try {
-      final formDataRequest = http.MultipartRequest('POST', Uri.parse(url));
-      final profileImageMultipart = http.MultipartFile(
-        'profile',
-        profileImage.readAsBytes().asStream(),
-        profileImage.lengthSync(),
-        filename: profileImage.path.split('/').last,
-      );
-      final coverMultipart = http.MultipartFile(
-        'cover',
-        coverImage.readAsBytes().asStream(),
-        coverImage.lengthSync(),
-        filename: coverImage.path.split('/').last,
-      );
-      formDataRequest.files.add(profileImageMultipart);
-      formDataRequest.files.add(coverMultipart);
-      formDataRequest.fields['first_name'] = profileData["firstName"];
-      formDataRequest.fields['last_name'] = profileData["LastName"];
-      formDataRequest.fields['sex'] = profileData["sex"];
-      formDataRequest.fields['date_of_birth'] =
-          profileData["dateOfBirth"].toString();
-      formDataRequest.headers['Authorization'] = 'Bearer $token';
-      //send to back end
-      final response = await formDataRequest.send();
-      final responseBody = await response.stream.transform(utf8.decoder).join();
-      final responseBodyDecoded = jsonDecode(responseBody);
-      print('response:................................${responseBody}');
-      //check response
-      final checkresponsebody = jsonDecode(responseBody);
-      if (checkresponsebody['message']
-          .toString()
-          .contains('User Profile Created Successfully')) {
-        Iscontinue = true;
-      } else {
-        throw 'faild to create profile';
-      }
-    } catch (error) {
-      throw error;
+
+    final formDataRequest = http.MultipartRequest('POST', Uri.parse(url));
+    final profileImageMultipart = http.MultipartFile(
+      'profile',
+      profileImage.readAsBytes().asStream(),
+      profileImage.lengthSync(),
+      filename: profileImage.path.split('/').last,
+    );
+    final coverMultipart = http.MultipartFile(
+      'cover',
+      coverImage.readAsBytes().asStream(),
+      coverImage.lengthSync(),
+      filename: coverImage.path.split('/').last,
+    );
+    formDataRequest.files.add(profileImageMultipart);
+    formDataRequest.files.add(coverMultipart);
+    formDataRequest.fields['first_name'] = profileData["firstName"];
+    formDataRequest.fields['last_name'] = profileData["LastName"];
+    formDataRequest.fields['sex'] = profileData["sex"];
+    formDataRequest.fields['date_of_birth'] =
+        profileData["dateOfBirth"].toString();
+    formDataRequest.headers['Authorization'] = 'Bearer $token';
+    //send to back end
+    final response = await formDataRequest.send();
+    final responseBody = await response.stream.transform(utf8.decoder).join();
+    final responseBodyDecoded = jsonDecode(responseBody);
+    print('response:................................${responseBody}');
+    //check response
+    final checkresponsebody = jsonDecode(responseBody);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      Iscontinue = true;
+    } else {
+      print("error occured/////////////////////////////////");
     }
+
     return Iscontinue;
   }
 

@@ -19,6 +19,8 @@ class MaterialModel with ChangeNotifier {
   final int? episode;
   final int? continues_from;
   final String? material;
+  final dynamic? material_image;
+  final dynamic? material_preview;
   final String? title;
   final String? description;
   final dynamic created_at;
@@ -26,6 +28,8 @@ class MaterialModel with ChangeNotifier {
 
   MaterialModel({
     required this.id,
+    this.material_image,
+    this.material_preview,
     required this.sellerProfile_id,
     required this.parent,
     required this.type,
@@ -48,10 +52,12 @@ class MaterialModel with ChangeNotifier {
     this.translator,
     this.updated_at,
   });
-  factory MaterialModel.fromJson(dynamic json) {
+  factory MaterialModel.fromJson(dynamic json, {bool isUpload = false}) {
     return MaterialModel(
       id: json['id'],
       sellerProfile_id: json['sellerProfile_id'],
+      material_image: isUpload ? null : json['material_image'][0]["id"],
+      material_preview: isUpload ? null : json['material_preview'][0]["id"],
       catagory: json['catagory'].toString(),
       description: json['description'].toString(),
       first_published_at: json['first_published_at'],

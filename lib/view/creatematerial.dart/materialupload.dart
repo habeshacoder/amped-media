@@ -153,25 +153,20 @@ class _MaterialUploadState extends State<MaterialUpload> {
     });
     MaterialModel materialbackEnd;
     bool? isDone;
-    try {
-      final token = Provider.of<Auth>(context, listen: false).token;
-      if (token == null) {
-        throw 'you are not authenticated';
-      }
-      final material =
-          Provider.of<materialCreationProvider>(context, listen: false)
-              .getMaterialById(widget.materialId, token);
-      materialbackEnd = await material;
-      print(
-          '........................................materialbackEnd${materialbackEnd.type}');
-      isDone =
-          await Provider.of<materialCreationProvider>(context, listen: false)
-              .createMaterialData(materialUploadData, token, materialbackEnd);
-    } catch (error) {
-      print(
-          'object...........................................................$error');
-      showalert('$error');
+
+    final token = Provider.of<Auth>(context, listen: false).token;
+    if (token == null) {
+      throw 'you are not authenticated';
     }
+    final material =
+        Provider.of<materialCreationProvider>(context, listen: false)
+            .getMaterialById(widget.materialId, token);
+    materialbackEnd = await material;
+    print(
+        '........................................materialbackEnd${materialbackEnd.type}');
+    isDone = await Provider.of<materialCreationProvider>(context, listen: false)
+        .createMaterialData(materialUploadData, token, materialbackEnd);
+
     setState(() {
       isSendingCreateProfileRequest = false;
     });
