@@ -13,13 +13,13 @@ class PodcastsOnBoarding extends StatelessWidget {
           Container(
             child: Image(
               width: double.infinity,
-              image: AssetImage(onboardingProvider[1].image),
+              image: AssetImage(onboardingProvider[2].image),
             ),
           ),
           Container(
             padding: EdgeInsets.only(left: 9),
             child: Text(
-              onboardingProvider[1].title,
+              onboardingProvider[2].title,
               style: TextStyle(
                 fontSize: 35,
                 fontFamily: 'Lora',

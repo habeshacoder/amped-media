@@ -82,7 +82,7 @@ class _HomeState extends State<Library> {
       ),
     );
     return Scaffold(
-      appBar: appBar,
+      // appBar: appBar,
       body: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(65.0),

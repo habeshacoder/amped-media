@@ -207,6 +207,31 @@ class materialCreationProvider with ChangeNotifier {
     return loadedMaterials;
   }
 
+  //get  material by type
+  Future<List<dynamic>> getMaterialByAudio(String parent) async {
+    final baseUrl = BackEndUrl.url;
+    final url = '$baseUrl/material/materials_by/${parent}';
+
+    final response = await http.get(Uri.parse(url),
+        headers: <String, String>{'Content-Type': 'application/json'});
+    print('getmaterial by type run...');
+
+    print(response.body);
+    List<MaterialModel> loadedMaterials = [];
+
+    final extractedResponse = json.decode(response.body);
+    // try {
+    //   extractedResponse.forEach((mat) {
+    //     loadedMaterials.add(MaterialModel.fromJson(mat));
+    //   });
+    //   print(loadedMaterials);
+    // } catch (error) {
+    //   print('eror......:${error}');
+    // }
+
+    return extractedResponse;
+  }
+
 //get material by id
   Future<MaterialModel> getMaterialById(int? id, String token) async {
     final baseUrl = BackEndUrl.url;

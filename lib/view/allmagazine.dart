@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ampedmedia_flutter/model/materialmodel.dart';
 import 'package:ampedmedia_flutter/provider/books.dart';
 import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
@@ -6,6 +8,7 @@ import 'package:ampedmedia_flutter/view/detailview/bookdetailview.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class AllMagazine extends StatefulWidget {
   static final routeName = '/AllMagazine';
@@ -18,32 +21,105 @@ class AllMagazine extends StatefulWidget {
 class _AllMagazineState extends State<AllMagazine> {
   late Future<List<MaterialModel>> materialList;
   String? token;
+
+  TextEditingController searchController = TextEditingController();
+  bool isSearching = false;
+  bool init = true;
   @override
   void didChangeDependencies() {
-    print('get top books info display didchangedepcey ...........');
-    materialList = Provider.of<materialCreationProvider>(context, listen: false)
-        .getMaterialByType('Magazine');
+    if (init == true) {
+      print('get top books info display didchangedepcey ...........');
+      materialList =
+          Provider.of<materialCreationProvider>(context, listen: false)
+              .getMaterialByType('Magazine');
+    }
+    init = false;
     super.didChangeDependencies();
+  }
+
+  //get  material by type
+  Future<List<MaterialModel>> searchMaterial(String keyValue) async {
+    final baseUrl = BackEndUrl.url;
+    final url = '$baseUrl/search';
+    final response = await http.post(Uri.parse(url),
+        headers: <String, String>{'Content-Type': 'application/json'},
+        body: jsonEncode({
+          "key": keyValue,
+          "parent": "Publication",
+          "type": "Magazine",
+        }));
+    print('search materil...${response.body}');
+
+    List<MaterialModel> loadedMaterials = [];
+
+    final extractedResponse = json.decode(response.body);
+    print('search extracted response...${extractedResponse}');
+    print('search extracted mainmatch...${extractedResponse["mainMatches"]}');
+
+    try {
+      extractedResponse["mainMatches"].forEach((mat) {
+        loadedMaterials.add(MaterialModel.fromJson(mat));
+      });
+      print("loadedmaterials-------------${loadedMaterials}");
+    } catch (error) {
+      print('eror......:${error}');
+    }
+    return loadedMaterials;
+  }
+
+  void onSearch(String searchText) {
+    setState(() {
+      isSearching = true;
+      materialList = searchMaterial(searchText.trim());
+    });
+  }
+
+  void clearSearch() {
+    setState(() {
+      isSearching = false;
+      searchController.clear();
+      materialList =
+          Provider.of<materialCreationProvider>(context, listen: false)
+              .getMaterialByType('Magazine');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     Books booksObject = Provider.of<Books>(context);
     var appBar = AppBar(
-      leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          )),
+      title: Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            controller: searchController,
+            onSubmitted: onSearch,
+            decoration: InputDecoration(
+              hintText: 'Search by title',
+              suffixIcon: isSearching
+                  ? IconButton(
+                      onPressed: clearSearch,
+                      icon: Icon(Icons.clear),
+                    )
+                  : Icon(Icons.search),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+              filled: true,
+              fillColor: Colors.grey[200],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide.none,
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       elevation: 0.5,
-      actions: [
-        // Image(image: AssetImage('assets/images/filter.png')),
-        // Image(image: AssetImage('assets/images/Notification.png')),
-      ],
     );
     return Scaffold(
       appBar: appBar,

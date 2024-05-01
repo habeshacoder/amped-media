@@ -80,4 +80,31 @@ class MaterialModel with ChangeNotifier {
       episode: json['episode'],
     );
   }
+  //search material
+  // factory MaterialModel.fromJsonSearch(dynamic json) {
+  //   return MaterialModel(
+  //     id: json['id'],
+  //     sellerProfile_id: json['sellerProfile_id'],
+  //     catagory: json['catagory'].toString(),
+  //     description: json['description'].toString(),
+  //     first_published_at: json['first_published_at'],
+  //     genere: json['genere'].toString(),
+  //     language: json['language'].toString(),
+  //     length_minute: json['length_minute'],
+  //     created_at: json['created_at'],
+  //     updated_at: json['updated_at'],
+  //     length_page: json['length_page'],
+  //     material: json['material'].toString(),
+  //     parent: json['parent'].toString(),
+  //     price: json['price'],
+  //     publisher: json['publisher'].toString(),
+  //     reader: json['reader'].toString(),
+  //     title: json['title'].toString(),
+  //     translator: json['translator'].toString(),
+  //     type: json['type'].toString(),
+  //     author: json['author'].toString(),
+  //     continues_from: json['continues_from'],
+  //     episode: json['episode'],
+  //   );
+  // }
 }

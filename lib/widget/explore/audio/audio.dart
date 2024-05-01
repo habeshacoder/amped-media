@@ -14,13 +14,13 @@ class Audio extends StatefulWidget {
 }
 
 class _AudioState extends State<Audio> {
-  late Future<List<MaterialModel>> materialList;
+  late Future<List<dynamic>> materialList;
   String? token;
   @override
   void didChangeDependencies() {
     print('get top books info display didchangedepcey ...........');
     materialList = Provider.of<materialCreationProvider>(context, listen: false)
-        .getMaterialByParent('Audio');
+        .getMaterialByAudio('Audio');
     super.didChangeDependencies();
   }
 
@@ -74,7 +74,7 @@ class _AudioState extends State<Audio> {
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
                                     headers: {},
-                                    '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].material_image}')),
+                                    '${BackEndUrl.url}/material/material_cover/${snapshot.data![index]["material_image"]}')),
                           ),
                           Container(
                             padding: const EdgeInsets.only(
@@ -85,7 +85,7 @@ class _AudioState extends State<Audio> {
                               children: [
                                 Container(
                                   child: Text(
-                                    '${snapshot.data![index].title}',
+                                    '${snapshot.data![index]["title"]}',
                                     style: TextStyle(fontSize: 13),
                                   ),
                                 ),
@@ -95,7 +95,7 @@ class _AudioState extends State<Audio> {
                           SizedBox(
                             height: 3,
                           ),
-                          Text('${snapshot.data![index].author}'),
+                          Text('${snapshot.data![index]["author"]}'),
                           SizedBox(
                             height: 3,
                           ),
@@ -103,8 +103,8 @@ class _AudioState extends State<Audio> {
                           SizedBox(
                             height: 3,
                           ),
-                          Text('${snapshot.data![index].price}'),
-                          Text('${snapshot.data![index].catagory}'),
+                          Text('${snapshot.data![index]["price"]}'),
+                          Text('${snapshot.data![index]["catagory"]}'),
                         ],
                       ),
                     ),

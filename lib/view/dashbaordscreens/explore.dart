@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 enum ExploreType {
   publication,
-  audio,
+  // audio,
   Unspecified,
 }
 
@@ -74,126 +74,126 @@ class _ExploreState extends State<Explore> {
       ),
     );
     return Scaffold(
-      appBar: appBar,
+      // appBar: appBar,
       body: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(25.0),
-          child: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
-            elevation: 0.5,
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(0),
-              child: Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          exploreTypeEnum = ExploreType.publication;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: exploreTypeEnum == ExploreType.publication
-                                ? BorderSide(
-                                    width: 1.5,
-                                    color: Color(0xFF00A19A),
-                                  )
-                                : BorderSide(
-                                    width: 0,
-                                    color: Colors.white,
-                                  ),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(25.0),
+            child: AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.white,
+              elevation: 0.5,
+              bottom: PreferredSize(
+                preferredSize: Size.fromHeight(0),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            exploreTypeEnum = ExploreType.publication;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: exploreTypeEnum == ExploreType.publication
+                                  ? BorderSide(
+                                      width: 1.5,
+                                      color: Color(0xFF00A19A),
+                                    )
+                                  : BorderSide(
+                                      width: 0,
+                                      color: Colors.white,
+                                    ),
+                            ),
                           ),
-                        ),
-                        child: Text(
-                          'Publication',
-                          style: TextStyle(
-                            color: exploreTypeEnum == ExploreType.publication
-                                ? Color(0xFF00A19A)
-                                : Colors.grey,
+                          child: Text(
+                            'Publication',
+                            style: TextStyle(
+                              color: exploreTypeEnum == ExploreType.publication
+                                  ? Color(0xFF00A19A)
+                                  : Colors.grey,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 13,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          exploreTypeEnum = ExploreType.audio;
-                        });
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: exploreTypeEnum == ExploreType.audio
-                                  ? BorderSide(
-                                      width: 1.5,
-                                      color: Color(0xFF00A19A),
-                                    )
-                                  : BorderSide(
-                                      width: 0,
-                                      color: Colors.white,
-                                    ),
-                            ),
-                          ),
-                          child: Text('Audio',
-                              style: TextStyle(
-                                color: exploreTypeEnum == ExploreType.audio
-                                    ? Color(0xFF00A19A)
-                                    : Colors.grey,
-                              ))),
-                    ),
-                    SizedBox(
-                      width: 13,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          exploreTypeEnum = ExploreType.Unspecified;
-                        });
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: exploreTypeEnum == ExploreType.Unspecified
-                                  ? BorderSide(
-                                      width: 1.5,
-                                      color: Color(0xFF00A19A),
-                                    )
-                                  : BorderSide(
-                                      width: 0,
-                                      color: Colors.white,
-                                    ),
-                            ),
-                          ),
-                          child: Text('Unspecified',
-                              style: TextStyle(
-                                color:
+                      SizedBox(
+                        width: 13,
+                      ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     setState(() {
+                      //       exploreTypeEnum = ExploreType.audio;
+                      //     });
+                      //   },
+                      //   child: Container(
+                      //       decoration: BoxDecoration(
+                      //         border: Border(
+                      //           bottom: exploreTypeEnum == ExploreType.audio
+                      //               ? BorderSide(
+                      //                   width: 1.5,
+                      //                   color: Color(0xFF00A19A),
+                      //                 )
+                      //               : BorderSide(
+                      //                   width: 0,
+                      //                   color: Colors.white,
+                      //                 ),
+                      //         ),
+                      //       ),
+                      //       child: Text('Audio',
+                      //           style: TextStyle(
+                      //             color: exploreTypeEnum == ExploreType.audio
+                      //                 ? Color(0xFF00A19A)
+                      //                 : Colors.grey,
+                      //           ))),
+                      // ),
+                      SizedBox(
+                        width: 13,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            exploreTypeEnum = ExploreType.Unspecified;
+                          });
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom:
                                     exploreTypeEnum == ExploreType.Unspecified
-                                        ? Color(0xFF00A19A)
-                                        : Colors.grey,
-                              ))),
-                    ),
-                  ],
+                                        ? BorderSide(
+                                            width: 1.5,
+                                            color: Color(0xFF00A19A),
+                                          )
+                                        : BorderSide(
+                                            width: 0,
+                                            color: Colors.white,
+                                          ),
+                              ),
+                            ),
+                            child: Text('Unspecified',
+                                style: TextStyle(
+                                  color:
+                                      exploreTypeEnum == ExploreType.Unspecified
+                                          ? Color(0xFF00A19A)
+                                          : Colors.grey,
+                                ))),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        body: exploreTypeEnum == ExploreType.publication
-            ? Publication()
-            : exploreTypeEnum == ExploreType.Unspecified
-                ? UnspecifiedView()
-                : Audio(),
-      ),
+          body: exploreTypeEnum == ExploreType.publication
+              ? Publication()
+              : UnspecifiedView()
+          // : Audio(),
+          ),
     );
   }
 }

@@ -74,20 +74,22 @@ class _HomeState extends State<Home> {
       ),
     );
     return Scaffold(
-      appBar: appBar,
-      body: RefreshIndicator(
-        onRefresh: () => _refresh(context),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(height: 230, child: TopScrolls()),
-              TopBooks(),
-              NewAudioBooks(),
-              PopularPodcasts(),
-              PopularMagazines(),
-              PopularNewspaper(),
-              TopPublicationChannels(),
-            ],
+      // appBar: appBar,
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: () => _refresh(context),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(height: 230, child: TopScrolls()),
+                TopBooks(),
+                NewAudioBooks(),
+                PopularPodcasts(),
+                PopularMagazines(),
+                PopularNewspaper(),
+                TopPublicationChannels(),
+              ],
+            ),
           ),
         ),
       ),
