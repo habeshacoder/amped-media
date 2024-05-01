@@ -1,5 +1,7 @@
 import 'package:ampedmedia_flutter/view/SearchPage.dart';
 import 'package:ampedmedia_flutter/widget/home/newaudiobooks.dart';
+import 'package:ampedmedia_flutter/widget/home/popular_magazine.dart';
+import 'package:ampedmedia_flutter/widget/home/popular_newspaper.dart';
 import 'package:ampedmedia_flutter/widget/home/popularpodcast.dart';
 import 'package:ampedmedia_flutter/widget/home/topbooks.dart';
 import 'package:ampedmedia_flutter/widget/home/toppublicationchannels.dart';
@@ -82,6 +84,8 @@ class _HomeState extends State<Home> {
               TopBooks(),
               NewAudioBooks(),
               PopularPodcasts(),
+              PopularMagazines(),
+              PopularNewspaper(),
               TopPublicationChannels(),
             ],
           ),

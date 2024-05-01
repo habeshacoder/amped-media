@@ -131,7 +131,7 @@ class All_AudioBooksState extends State<AllAudioBooks> {
                             // SizedBox(
                             //   height: 3,
                             // ),
-                            Text('${snapshot.data![index].price}'),
+                            Text('${snapshot.data![index].price} birr'),
                           ],
                         ),
                       ),

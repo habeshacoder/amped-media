@@ -450,7 +450,10 @@ class _BookDetailViewState extends State<BookDetailView> {
                 return Text('');
               },
             ),
-            MoreFromAuthor(book: widget.book),
+            MoreFromAuthor(
+              book: widget.book,
+              typeOfmaterial: 'Book',
+            ),
           ],
         ),
       ),

@@ -4,24 +4,25 @@ import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
 import 'package:ampedmedia_flutter/view/detailview/bookdetailview.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class AllBooks extends StatefulWidget {
-  static final routeName = '/AllBooks';
-  const AllBooks({super.key});
+class AllNewsPapers extends StatefulWidget {
+  static final routeName = '/AllNewsPapers';
+  const AllNewsPapers({super.key});
 
   @override
-  State<AllBooks> createState() => _AllBooksState();
+  State<AllNewsPapers> createState() => _AllNewsPapersState();
 }
 
-class _AllBooksState extends State<AllBooks> {
+class _AllNewsPapersState extends State<AllNewsPapers> {
   late Future<List<MaterialModel>> materialList;
   String? token;
   @override
   void didChangeDependencies() {
     print('get top books info display didchangedepcey ...........');
     materialList = Provider.of<materialCreationProvider>(context, listen: false)
-        .getMaterialByType('Book');
+        .getMaterialByType('Newspaper');
     super.didChangeDependencies();
   }
 
@@ -52,7 +53,7 @@ class _AllBooksState extends State<AllBooks> {
           Container(
             margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
             child: Text(
-              'Books',
+              'NewsPapers',
               style: TextStyle(color: Colors.black, fontSize: 24),
             ),
           ),
@@ -101,47 +102,30 @@ class _AllBooksState extends State<AllBooks> {
                                       headers: {},
                                       '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].material_image}')),
                             ),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                top: 1,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      '${snapshot.data![index].title}',
-                                      style: TextStyle(fontSize: 13),
-                                    ),
-                                  ),
-                                  // Row(
-                                  //   children: [
-                                  //     Text(
-                                  //       '2.3',
-                                  //     ),
-                                  //     SizedBox(
-                                  //       width: 3.3,
-                                  //     ),
-                                  //     Icon(
-                                  //       Icons.star,
-                                  //       size: 15,
-                                  //     )
-                                  //   ],
-                                  // )
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 3,
-                            ),
-                            Text('${snapshot.data![index].author}'),
-                            SizedBox(
-                              height: 3,
-                            ),
-                            Text('${snapshot.data![index].first_published_at}'),
-                            SizedBox(
-                              height: 3,
+                            // Container(
+                            //   padding: const EdgeInsets.only(
+                            //     top: 1,
+                            //   ),
+                            //   child: Row(
+                            //     mainAxisAlignment:
+                            //         MainAxisAlignment.spaceBetween,
+                            //     children: [
+                            //       Container(
+                            //         child: Text(
+                            //           '${snapshot.data![index].title}',
+                            //           style: TextStyle(fontSize: 13),
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   height: 3,
+                            // ),
+                            Text('${snapshot.data![index].title}'),
+                            Text('${snapshot.data![index].publisher}'),
+                            Text(
+                              '${DateFormat('dd-MM-yyyy').format(DateTime.parse(snapshot.data![index].created_at))}',
                             ),
                             Text('${snapshot.data![index].price} birr'),
                           ],

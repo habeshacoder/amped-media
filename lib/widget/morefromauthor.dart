@@ -1,16 +1,22 @@
+import 'package:ampedmedia_flutter/dashboard.dart';
 import 'package:ampedmedia_flutter/model/materialmodel.dart';
 import 'package:ampedmedia_flutter/provider/auth.dart';
 import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
+import 'package:ampedmedia_flutter/view/allaudiobooks.dart';
 import 'package:ampedmedia_flutter/view/allbooks.dart';
+import 'package:ampedmedia_flutter/view/allmagazine.dart';
+import 'package:ampedmedia_flutter/view/allnewspaper.dart';
+import 'package:ampedmedia_flutter/view/allpodcast.dart';
 import 'package:ampedmedia_flutter/view/detailview/bookdetailview.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class MoreFromAuthor extends StatefulWidget {
-  const MoreFromAuthor({required this.book});
+  MoreFromAuthor({required this.book, required this.typeOfmaterial});
   final MaterialModel book;
+  String typeOfmaterial;
   @override
   State<MoreFromAuthor> createState() => _MoreFromAuthorState();
 }
@@ -57,8 +63,8 @@ class _MoreFromAuthorState extends State<MoreFromAuthor> {
                     InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AllBooks(),
-                        ));
+                            builder: (context) =>
+                                getPage(widget.typeOfmaterial)));
                       },
                       child: Text(
                         'more',
@@ -227,5 +233,31 @@ class _MoreFromAuthorState extends State<MoreFromAuthor> {
         ],
       ),
     );
+  }
+
+  Widget getPage(String mediaType) {
+    dynamic page;
+
+    switch (mediaType) {
+      case 'AudioBook':
+        page = AllAudioBooks();
+        break;
+      case 'Book':
+        page = AllBooks();
+        break;
+      case 'Magazine':
+        page = AllMagazine();
+        break;
+      case 'NewsPaper':
+        page = AllNewsPapers();
+        break;
+      case 'Podcast':
+        page = AllPodcasts();
+        break;
+      default:
+        page = DashBoard();
+        break;
+    }
+    return page;
   }
 }

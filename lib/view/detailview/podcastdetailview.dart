@@ -377,7 +377,10 @@ class _PodcastDetailViewState extends State<PodcastDetailView> {
                   return Text('');
                 },
               ),
-              MoreFromAuthor(book: widget.book),
+              MoreFromAuthor(
+                book: widget.book,
+                typeOfmaterial: 'Podcast',
+              ),
             ],
           ),
         ),

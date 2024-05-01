@@ -97,6 +97,7 @@ class All_AudioBooksState extends State<AllPodcasts> {
                                     '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].material_image}')),
                           ),
                           Text('${snapshot.data![index].title}'),
+                          Text('${snapshot.data![index].price} birr'),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

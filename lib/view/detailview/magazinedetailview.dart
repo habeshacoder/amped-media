@@ -12,14 +12,15 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class AudioBookDetail extends StatefulWidget {
-  AudioBookDetail({required this.book});
+class MagazineDetailView extends StatefulWidget {
+  MagazineDetailView({required this.book});
   final MaterialModel book;
   @override
-  State<AudioBookDetail> createState() => _AudioBookDetailState();
+  State<MagazineDetailView> createState() => _MagazineDetailViewState();
 }
 
-class _AudioBookDetailState extends State<AudioBookDetail> {
+class _MagazineDetailViewState extends State<MagazineDetailView> {
+  double _rating = 0;
   dynamic totalRating = 0;
   dynamic avgRating = 0;
   @override
@@ -27,10 +28,23 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarColor: Colors.transparent, // transparent status bar
-        statusBarIconBrightness: Brightness.dark, // dark text for status bar
+        statusBarIconBrightness: Brightness.light, // dark text for status bar
       ),
     );
+
     super.initState();
+  }
+
+  late Future<List<Rate>> userRates;
+  String? token;
+  @override
+  void didChangeDependencies() {
+    print('profiledisppkayinfo...........');
+
+    token = Provider.of<Auth>(context, listen: false).token;
+    userRates = Provider.of<materialCreationProvider>(context, listen: false)
+        .getRates(token, widget.book.id);
+    super.didChangeDependencies();
   }
 
   void showalert(String message) {
@@ -53,26 +67,11 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
     );
   }
 
-  late Future<List<Rate>> userRates;
-  // Future<List<MaterialModel>>? materialData;
-
-  String? token;
-  @override
-  void didChangeDependencies() {
-    print('profiledisppkayinfo...........');
-
-    token = Provider.of<Auth>(context, listen: false).token;
-    userRates = Provider.of<materialCreationProvider>(context, listen: false)
-        .getRates(token, widget.book.id);
-    // materialData = Provider.of<materialCreationProvider>(context, listen: false)
-    //     .getMaterialByType('Book');
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.4,
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -83,7 +82,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
             )),
         backgroundColor: Colors.white,
         title: Text(
-          '${widget.book.title}  Audiobook Detail',
+          '${widget.book.title}  Book Detail',
           style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
@@ -106,7 +105,6 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
@@ -162,13 +160,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
                   ),
                   Text('${widget.book.title}'),
                   Text('${widget.book.author}'),
-                  Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                      decoration: BoxDecoration(
-                          color: Color(0xFF00A19A),
-                          borderRadius: BorderRadius.circular(3)),
-                      child: Text('${widget.book.price}')),
+                  Text('${widget.book.price}'),
                 ],
               ),
             ),
@@ -185,7 +177,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('rate'),
+                      Text('Rate'),
                       SizedBox(
                         height: 10,
                       ),
@@ -212,7 +204,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Number of pages'),
+                      Text('Pages'),
                       SizedBox(
                         height: 10,
                       ),
@@ -223,7 +215,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('created date'),
+                      Text('Date'),
                       SizedBox(
                         height: 10,
                       ),
@@ -244,7 +236,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Audiobook description', style: TextStyle(fontSize: 18)),
+                  Text('Book description', style: TextStyle(fontSize: 18)),
                   SeeMoreWidget(description: '${widget.book.description}'),
                 ],
               ),
@@ -252,8 +244,8 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-              child: Text('more about the Audiobook',
-                  style: TextStyle(fontSize: 18)),
+              child:
+                  Text('more about the book', style: TextStyle(fontSize: 18)),
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -270,12 +262,30 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              margin: EdgeInsets.symmetric(horizontal: 3, vertical: 15),
+              padding: EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('The Auther:'),
+                  Text('Publisher :'),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text('${widget.book.publisher}'),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 3, vertical: 15),
+              padding: EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Author :'),
                   SizedBox(
                     width: 20,
                   ),
@@ -372,6 +382,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
             FutureBuilder(
               future: userRates,
               builder: (context, snapshot) {
+                print('.......................................');
                 if (snapshot.hasData) {
                   return Container(
                     margin: EdgeInsets.only(left: 10),
@@ -384,6 +395,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (BuildContext context, int index) {
                         final ratingvalue = snapshot.data![index].rating * 1.0;
+                        print(totalRating);
                         return Container(
                           margin: EdgeInsets.symmetric(
                             vertical: 5,
@@ -458,7 +470,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
             ),
             MoreFromAuthor(
               book: widget.book,
-              typeOfmaterial: 'AudioBook',
+              typeOfmaterial: 'Magazine',
             ),
           ],
         ),

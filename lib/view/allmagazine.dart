@@ -4,24 +4,25 @@ import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
 import 'package:ampedmedia_flutter/view/detailview/bookdetailview.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class AllBooks extends StatefulWidget {
-  static final routeName = '/AllBooks';
-  const AllBooks({super.key});
+class AllMagazine extends StatefulWidget {
+  static final routeName = '/AllMagazine';
+  const AllMagazine({super.key});
 
   @override
-  State<AllBooks> createState() => _AllBooksState();
+  State<AllMagazine> createState() => _AllMagazineState();
 }
 
-class _AllBooksState extends State<AllBooks> {
+class _AllMagazineState extends State<AllMagazine> {
   late Future<List<MaterialModel>> materialList;
   String? token;
   @override
   void didChangeDependencies() {
     print('get top books info display didchangedepcey ...........');
     materialList = Provider.of<materialCreationProvider>(context, listen: false)
-        .getMaterialByType('Book');
+        .getMaterialByType('Magazine');
     super.didChangeDependencies();
   }
 
@@ -52,7 +53,7 @@ class _AllBooksState extends State<AllBooks> {
           Container(
             margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
             child: Text(
-              'Books',
+              'Magazines',
               style: TextStyle(color: Colors.black, fontSize: 24),
             ),
           ),
@@ -94,7 +95,7 @@ class _AllBooksState extends State<AllBooks> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              height: 140,
+                              height: 124,
                               child: Image(
                                   fit: BoxFit.cover,
                                   image: NetworkImage(
@@ -115,35 +116,15 @@ class _AllBooksState extends State<AllBooks> {
                                       style: TextStyle(fontSize: 13),
                                     ),
                                   ),
-                                  // Row(
-                                  //   children: [
-                                  //     Text(
-                                  //       '2.3',
-                                  //     ),
-                                  //     SizedBox(
-                                  //       width: 3.3,
-                                  //     ),
-                                  //     Icon(
-                                  //       Icons.star,
-                                  //       size: 15,
-                                  //     )
-                                  //   ],
-                                  // )
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 3,
-                            ),
-                            Text('${snapshot.data![index].author}'),
-                            SizedBox(
-                              height: 3,
-                            ),
-                            Text('${snapshot.data![index].first_published_at}'),
-                            SizedBox(
-                              height: 3,
-                            ),
+                            Text('${snapshot.data![index].title}'),
+                            Text('${snapshot.data![index].publisher}'),
                             Text('${snapshot.data![index].price} birr'),
+                            Text(
+                              '${DateFormat('dd-MM-yyyy').format(DateTime.parse(snapshot.data![index].created_at))}',
+                            )
                           ],
                         ),
                       ),
