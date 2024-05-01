@@ -84,17 +84,15 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: title,
           theme: ThemeData(),
-          home: auth.isFirstTime
-              ? FutureBuilder(
-                  future: auth.getIsfirstTime,
-                  builder: (context, snapshot) =>
-                      snapshot.connectionState == ConnectionState.waiting
-                          ? SplashSCreen()
-                          : snapshot.data == false
-                              ? DashBoard()
-                              : OnbordingView(),
-                )
-              : DashBoard(),
+          home: FutureBuilder(
+            future: auth.getIsfirstTime,
+            builder: (context, snapshot) =>
+                snapshot.connectionState == ConnectionState.waiting
+                    ? SplashSCreen()
+                    : snapshot.data == false
+                        ? DashBoard()
+                        : OnbordingView(),
+          ),
         );
       }),
     );

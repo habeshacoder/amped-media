@@ -130,38 +130,38 @@ class _UserProfileState extends State<UserProfile> {
                       ],
                     ),
                     if (selectedProfileType == 'publisher')
-                      ListTile(
-                        title: Text('Account Dashboard'),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SellerDashBoardScreen(),
-                          ));
-                        },
-                      ),
-                    if (selectedProfileType == 'reader')
-                      ListTile(
-                        title: Text('Account Dashboard'),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UserProfileDashboard(),
-                          ));
-                        },
-                      ),
-                    ListTile(
-                      title: Text('Account Information'),
-                      onTap: () {
-                        if (selectedProfileType == 'reader') {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => EditUserProfile(),
-                          ));
-                        }
-                        if (selectedProfileType == 'publisher') {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => EditSellerProfile(),
-                          ));
-                        }
-                      },
-                    ),
+                      // ListTile(
+                      //   title: Text('Account Dashboard'),
+                      //   onTap: () {
+                      //     Navigator.of(context).push(MaterialPageRoute(
+                      //       builder: (context) => SellerDashBoardScreen(),
+                      //     ));
+                      //   },
+                      // ),
+                      if (selectedProfileType == 'reader')
+                        // ListTile(
+                        //   title: Text('Account Dashboard'),
+                        //   onTap: () {
+                        //     Navigator.of(context).push(MaterialPageRoute(
+                        //       builder: (context) => UserProfileDashboard(),
+                        //     ));
+                        //   },
+                        // ),
+                        ListTile(
+                          title: Text('Account Information'),
+                          onTap: () {
+                            if (selectedProfileType == 'reader') {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => EditUserProfile(),
+                              ));
+                            }
+                            if (selectedProfileType == 'publisher') {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => EditSellerProfile(),
+                              ));
+                            }
+                          },
+                        ),
                     // ListTile(
                     //   title: Text('Privacy Settings'),
                     //   onTap: null,

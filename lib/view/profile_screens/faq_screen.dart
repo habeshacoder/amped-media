@@ -16,8 +16,8 @@ class _FaqScreenState extends State<FaqScreen> {
   @override
   void initState() {
     super.initState();
-    general = getFAQsByCategory("all");
-    customerJourney = getCutomerJourneyByCategory("CJ");
+    general = getFAQsByCategory("CJ");
+    customerJourney = getCutomerJourneyByCategory("all");
   }
 
   String selectedAnswer = '';
@@ -55,12 +55,12 @@ class _FaqScreenState extends State<FaqScreen> {
                   'Customer journey',
                   style: Theme.of(context)
                       .textTheme
-                      .displayMedium!
-                      .copyWith(color: Colors.grey),
+                      .displaySmall!
+                      .copyWith(color: Colors.grey, fontSize: 30),
                 ),
               ),
               Text(
-                'steps to follow on Kidme Asbeza app',
+                'steps to follow on AMPED Media app',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(
@@ -97,7 +97,7 @@ class _FaqScreenState extends State<FaqScreen> {
                   //     child: Text(
                   //       customerJourney[index].step,
                   //       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  //           color: ColorName.primaryColor,
+                  //           color: Colors.green[800],
                   //           decoration: TextDecoration.underline),
                   //     ),
                   //   ),
@@ -114,25 +114,20 @@ class _FaqScreenState extends State<FaqScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Text(
-                  'Kidme Asbeza Faq',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayMedium!
-                      .copyWith(color: Colors.grey),
+                  'AMPED Media Faq',
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                        color: Colors.grey,
+                        fontSize: 30,
+                      ),
                 ),
               ),
               Text(
-                'This faq provides answer to basic questions about Kidme Asbeza',
+                'This faq provides answer to basic questions about AMPED Media',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(
                 height: 30,
               ),
-              // setState(() {
-              //   selectedAnswer = general[index].answer;
-              //   selectedQuestion = general[index].question;
-              //   selectedCategory = general[index].category;
-              // });
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -157,11 +152,6 @@ class _FaqScreenState extends State<FaqScreen> {
                           );
                         },
                       );
-                      // setState(() {
-                      //   selectedAnswer = general[index].answer;
-                      //   selectedQuestion = general[index].question;
-                      //   selectedCategory = general[index].category;
-                      // });
                     },
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 8),

@@ -9,6 +9,7 @@ import 'package:ampedmedia_flutter/widget/writingreview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class BookDetailView extends StatefulWidget {
@@ -85,21 +86,21 @@ class _BookDetailViewState extends State<BookDetailView> {
           style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.bookmark_border_outlined,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              // Add action here
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.notifications_none_sharp, color: Colors.black),
-            onPressed: () {
-              // Add action here
-            },
-          ),
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.bookmark_border_outlined,
+          //     color: Colors.black,
+          //   ),
+          //   onPressed: () {
+          //     // Add action here
+          //   },
+          // ),
+          // IconButton(
+          //   icon: Icon(Icons.notifications_none_sharp, color: Colors.black),
+          //   onPressed: () {
+          //     // Add action here
+          //   },
+          // ),
         ],
       ),
       body: SingleChildScrollView(
@@ -176,7 +177,7 @@ class _BookDetailViewState extends State<BookDetailView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('rate'),
+                      Text('Rate'),
                       SizedBox(
                         height: 10,
                       ),
@@ -203,7 +204,7 @@ class _BookDetailViewState extends State<BookDetailView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Number of pages'),
+                      Text('Pages'),
                       SizedBox(
                         height: 10,
                       ),
@@ -214,11 +215,14 @@ class _BookDetailViewState extends State<BookDetailView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('created date'),
+                      Text('Date'),
                       SizedBox(
                         height: 10,
                       ),
-                      Text('${widget.book.created_at}'),
+                      Text(
+                        '${DateFormat('dd-MM-yyyy').format(DateTime.parse('${widget.book.created_at}'))}',
+                        softWrap: true,
+                      ),
                     ],
                   ),
                 ],
@@ -271,32 +275,32 @@ class _BookDetailViewState extends State<BookDetailView> {
                 ],
               ),
             ),
-            Divider(),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-              height: 50,
-              width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(5)),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      child: Text('preview')),
-                  Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFF00A19A),
-                          borderRadius: BorderRadius.circular(5)),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      child: Text('buy now')),
-                ],
-              ),
-            ),
+            // Divider(),
+            // Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            //   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            //   height: 50,
+            //   width: double.infinity,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //     children: [
+            //       Container(
+            //           decoration: BoxDecoration(
+            //               color: Colors.grey[200],
+            //               borderRadius: BorderRadius.circular(5)),
+            //           padding:
+            //               EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            //           child: Text('preview')),
+            //       Container(
+            //           decoration: BoxDecoration(
+            //               color: Color(0xFF00A19A),
+            //               borderRadius: BorderRadius.circular(5)),
+            //           padding:
+            //               EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            //           child: Text('buy now')),
+            //     ],
+            //   ),
+            // ),
             Divider(),
             Consumer<Auth>(
               builder: (context, auth, child) => Card(

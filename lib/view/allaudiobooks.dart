@@ -40,8 +40,8 @@ class All_AudioBooksState extends State<AllAudioBooks> {
       backgroundColor: Colors.white,
       elevation: 0.5,
       actions: [
-        Image(image: AssetImage('assets/images/filter.png')),
-        Image(image: AssetImage('assets/images/Notification.png')),
+        // Image(image: AssetImage('assets/images/filter.png')),
+        // Image(image: AssetImage('assets/images/Notification.png')),
       ],
     );
     return Scaffold(
@@ -113,38 +113,24 @@ class All_AudioBooksState extends State<AllAudioBooks> {
                                       style: TextStyle(fontSize: 13),
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '2.3',
-                                      ),
-                                      SizedBox(
-                                        width: 3.3,
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        size: 15,
-                                      )
-                                    ],
-                                  )
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 3,
-                            ),
+                            // SizedBox(
+                            //   height: 3,
+                            // ),
                             Text(
                               '${snapshot.data![index].reader}',
                             ),
-                            SizedBox(
-                              height: 3,
-                            ),
+                            // SizedBox(
+                            //   height: 3,
+                            // ),
                             Text(
                               '${snapshot.data![index].author}',
                             ),
-                            SizedBox(
-                              height: 3,
-                            ),
+                            // SizedBox(
+                            //   height: 3,
+                            // ),
                             Text('${snapshot.data![index].price}'),
                           ],
                         ),

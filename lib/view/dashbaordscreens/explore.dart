@@ -1,11 +1,13 @@
 import 'package:ampedmedia_flutter/view/SearchPage.dart';
 import 'package:ampedmedia_flutter/widget/explore/audio/audio.dart';
 import 'package:ampedmedia_flutter/widget/explore/publication/publication.dart';
+import 'package:ampedmedia_flutter/widget/explore/unspecified/unspecified.dart';
 import 'package:flutter/material.dart';
 
 enum ExploreType {
   publication,
   audio,
+  Unspecified,
 }
 
 class Explore extends StatefulWidget {
@@ -66,8 +68,8 @@ class _ExploreState extends State<Explore> {
               ),
             ),
           ),
-          Image(image: AssetImage('assets/images/filter.png')),
-          Image(image: AssetImage('assets/images/Notification.png')),
+          // Image(image: AssetImage('assets/images/filter.png')),
+          // Image(image: AssetImage('assets/images/Notification.png')),
         ],
       ),
     );
@@ -149,6 +151,37 @@ class _ExploreState extends State<Explore> {
                                     : Colors.grey,
                               ))),
                     ),
+                    SizedBox(
+                      width: 13,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          exploreTypeEnum = ExploreType.Unspecified;
+                        });
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: exploreTypeEnum == ExploreType.Unspecified
+                                  ? BorderSide(
+                                      width: 1.5,
+                                      color: Color(0xFF00A19A),
+                                    )
+                                  : BorderSide(
+                                      width: 0,
+                                      color: Colors.white,
+                                    ),
+                            ),
+                          ),
+                          child: Text('Unspecified',
+                              style: TextStyle(
+                                color:
+                                    exploreTypeEnum == ExploreType.Unspecified
+                                        ? Color(0xFF00A19A)
+                                        : Colors.grey,
+                              ))),
+                    ),
                   ],
                 ),
               ),
@@ -157,7 +190,9 @@ class _ExploreState extends State<Explore> {
         ),
         body: exploreTypeEnum == ExploreType.publication
             ? Publication()
-            : Audio(),
+            : exploreTypeEnum == ExploreType.Unspecified
+                ? UnspecifiedView()
+                : Audio(),
       ),
     );
   }

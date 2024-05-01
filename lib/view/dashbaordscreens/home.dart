@@ -66,8 +66,8 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          Image(image: AssetImage('assets/images/filter.png')),
-          Image(image: AssetImage('assets/images/Notification.png')),
+          // Image(image: AssetImage('assets/images/filter.png')),
+          // Image(image: AssetImage('assets/images/Notification.png')),
         ],
       ),
     );

@@ -119,7 +119,7 @@ class _ProfileCoverImgaeUploadState extends State<ProfileCoverImgaeUpload> {
       decoration: BoxDecoration(color: Color(0xFFF3F3F3)),
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       width: double.infinity,
-      height: loadedImageUrl != null ? 200 : 155,
+      height: loadedImageUrl != null ? 200 : 200,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

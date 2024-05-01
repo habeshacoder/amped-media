@@ -40,8 +40,8 @@ class All_AudioBooksState extends State<AllPodcasts> {
       backgroundColor: Colors.white,
       elevation: 0.5,
       actions: [
-        Image(image: AssetImage('assets/images/filter.png')),
-        Image(image: AssetImage('assets/images/Notification.png')),
+        // Image(image: AssetImage('assets/images/filter.png')),
+        // Image(image: AssetImage('assets/images/Notification.png')),
       ],
     );
     return Scaffold(

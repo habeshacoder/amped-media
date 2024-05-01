@@ -5,6 +5,7 @@ import 'package:ampedmedia_flutter/widget/onboarding/podcastsonboarding.dart';
 import 'package:ampedmedia_flutter/widget/onboarding/publication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnbordingView extends StatefulWidget {
   @override
@@ -172,7 +173,10 @@ class _OnbordingViewState extends State<OnbordingView> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             TextButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                final prefs =
+                                    await SharedPreferences.getInstance();
+                                prefs.setBool("isFirstTime", false);
                                 Navigator.of(context)
                                     .pushNamed(DashBoard.routeName);
                               },

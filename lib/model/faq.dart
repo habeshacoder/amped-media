@@ -24,110 +24,77 @@ class CustomerJourney {
   });
 }
 
+//
 final List<CustomerJourney> customerJourneys = [
   CustomerJourney(
-      category: "CJ",
-      step: "1st Step – Registration On The App Of Kidmeasbeza",
+      category: "all",
+      step: "1st Step – Registering and Logging In",
       description: [
-        '•Customer should provide all needed personal information and pick up location information of the product (oil)',
-        '•While Registering the customer is expected to pay 30 birr for subscription fee ',
+        '• Navigate to the Profile after install and get in to AMPED media app ',
+        '• click on the "Signin" from lists',
+        '• click on the "Create new account"button from login page',
+        '• Fill out the registration form with required details such as username, email, and password.',
+        '• Click on the "IGN UP" button to create an account.',
+        '• Once registered, log in using the provided credentials on the login page.'
       ]),
   CustomerJourney(
-      category: "CJ",
-      step: "2nd Step - Payment And Order",
+      category: "all",
+      step: "2nd Step – Searching for Materials",
       description: [
-        "10 liter oil- 1300 birr",
-        "15 liter oil - 1950  birr ",
-        "20 litter oil- 2600 birr",
-        "For instance , 30(sub)+1300= 1330 birr per person "
+        '• Navigate to the home page after logging in.',
+        '• Use the search bar to search for materials based on keywords or categories.',
+        '• Browse through the search results to find desired materials.'
       ]),
-  CustomerJourney(category: "CJ", step: "3rd -Product Pick Up ", description: [
-    'Clients will go to the district of the their chose to collect the oil ',
-  ]),
   CustomerJourney(
-      category: "CJ",
-      step: "4th – Receive Notification SMS Email ",
-      description: ["They will be receive a conformation text or SMS"]),
+      category: "all",
+      step: "3rd Step – Uploading Materials",
+      description: [
+        '• Log in to the dashboard using publisher credentials.',
+        '• Click on the "Upload Material" button.',
+        '• Fill out the upload form with details such as material name, description, and file upload.',
+        '• Click on the "Upload" button to submit the material.'
+      ]),
+  CustomerJourney(
+      category: "all",
+      step: "4th Step – Creating a Channel",
+      description: [
+        '• Navigate to the profile after logging in.',
+        '• Click on the "Create Channel" option.',
+        '• Fill out the channel creation form with details such as channel name and description.',
+        '• Click on the "Create" button to create the channel.'
+      ]),
 ];
+//
 
 final List<FAQItem> faqItems = [
   FAQItem(
-    category: "all",
-    question: '-What is the aim of the kidmeasbeza?',
-    answer:
-        'The rationale behind creating the KidmeAsbeza Project is the current high level of price inflation of commodities especially food items that bring about high cost of living to lower- and middle-income households. Kidmeasbeza will provide grocery with a constant price through out the year.',
-  ),
-  FAQItem(
-      category: "all",
-      question: "-How many times can you register per year ?",
-      answer: "Ones a year"),
-  FAQItem(
-      category: "all",
-      question: "-Where can I receive the product (oil )?",
-      answer: "On the district you have registered "),
-  FAQItem(
-      category: "all",
-      question: "-Whom to contact for more information? ",
-      answer: "Call center – xxxx"),
-  FAQItem(
-      category: "all",
-      question: "-How long is the project going to last? ",
-      answer: "This is a continuous project which will be revised every year "),
-  FAQItem(
-      category: "all",
-      question: "-Can we use  more than one phone number? ",
-      answer: "No, only one number can be used per person "),
-  FAQItem(
-      category: "all",
+      category: "CJ",
       question:
-          "-In case of changing phone number , how can we include the new number on the program ?",
+          "Does AMPEND Media offer marketing and promotion services for publishers?",
       answer:
-          "   please contact the call center so they can replace your number or update it on our setting “ account management “button ."),
+          "Absolutely! AMPEND Media provides marketing and promotion services to help publishers reach a wider audience and increase exposure for their publications. Our marketing team will work with you to create targeted campaigns and promotional strategies."),
   FAQItem(
-      category: "all",
-      question: "-What is the proof for the sustainability?",
+      category: "CJ",
+      question: "Can I contribute user-generated content to AMPEND Media?",
       answer:
-          "Incase of delay we will provide penalty for the customer. We have a long term agreement with our vendor ,that shows the sustainability on delivery and price ."),
+          "Yes, AMPEND Media welcomes user-generated content submissions across various media formats. Whether it's articles, stories, or podcasts, we encourage users to share their creative work with our community. Our editorial team will review submissions for quality and suitability."),
   FAQItem(
-      category: "all",
-      question: "-What is the ingredient of the oil ?",
-      answer: "The ingredient is sunflower "),
-  FAQItem(
-      category: "all",
-      question: "-Where is the head office located ?",
+      category: "CJ",
+      question: '- What file formats are supported for uploading materials?',
       answer:
-          "Kera , in front of salvatory wood work , Next to lidiya building . Alexander pushkin road "),
+          'We support various file formats, including MP3 for audio, EPUB for e-books. Ensure your material meets the specified format requirements before uploading.'),
   FAQItem(
-      category: "all",
-      question: "-How long will it take for delivery ?",
+      category: "CJ",
+      question: '- Can I promote my materials on the platform?',
       answer:
-          " first round will take 60 days , other than that the oil will be delivered every month ."),
+          'Yes, publishers can promote their materials through featured listings, sponsored placements, and targeted advertising campaigns to increase visibility and reach a wider audience.'),
   FAQItem(
-      category: "all",
-      question: "-Can we change the quantity and pickup location?",
-      answer:
-          "-when making the order for the next month you are able to make the change ."),
-  FAQItem(
-      category: "all",
-      question: "-Is it only oil that Kidemeasebza provide for the community ?",
-      answer:
-          "As the name indicates the project is aimed to include all asbeza’s ( grocery ) needed in our daily life. Our launch project focuses on the oil for now.   "),
-  FAQItem(
-      category: "all",
-      question: "-Does Kidemeasebza provide delivery?",
-      answer:
-          "No,we only deliver to the districts ( wereda) of your selection ."),
-  FAQItem(
-      category: "all",
-      question:
-          "-How can I collect the product if I couldn’t collect it with in the given 10 days ?",
-      answer: "Please contact the call center ."),
-  FAQItem(
-      category: "all",
-      question:
-          "-After making payment and choosing quantity is it possible to cancel the order ?",
-      answer: "no it is not possible "),
+      category: "CJ",
+      question: '- Do I retain ownership of my materials after uploading them?',
+      answer: 'Publishers maintain ownership rights of their materials.'),
 ];
+
+//
 List<FAQItem> getFAQsByCategory(String category) {
   return faqItems.where((item) => item.category == category).toList();
 }

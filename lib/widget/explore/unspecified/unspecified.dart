@@ -6,21 +6,21 @@ import 'package:ampedmedia_flutter/view/detailview/bookdetailview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Publication extends StatefulWidget {
-  const Publication({super.key});
+class UnspecifiedView extends StatefulWidget {
+  const UnspecifiedView({super.key});
 
   @override
-  State<Publication> createState() => _PublicationState();
+  State<UnspecifiedView> createState() => _PublicationState();
 }
 
-class _PublicationState extends State<Publication> {
+class _PublicationState extends State<UnspecifiedView> {
   late Future<List<MaterialModel>> materialList;
   String? token;
   @override
   void didChangeDependencies() {
     print('get top books info display didchangedepcey ...........');
     materialList = Provider.of<materialCreationProvider>(context, listen: false)
-        .getMaterialByParent('Publication');
+        .getMaterialByParent('Unspecified');
     super.didChangeDependencies();
   }
 
@@ -96,12 +96,13 @@ class _PublicationState extends State<Publication> {
                             height: 3,
                           ),
                           Text('${snapshot.data![index].author}'),
-                          // SizedBox(
-                          //   height: 3,
-                          // ),
-                          // SizedBox(
-                          //   height: 3,
-                          // ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          // Text('${snapshot.data![index].first_published_at}'),
+                          SizedBox(
+                            height: 3,
+                          ),
                           Text('${snapshot.data![index].price}'),
                           Text('${snapshot.data![index].catagory}'),
                         ],

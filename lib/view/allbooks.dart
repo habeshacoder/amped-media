@@ -40,8 +40,8 @@ class _AllBooksState extends State<AllBooks> {
       backgroundColor: Colors.white,
       elevation: 0.5,
       actions: [
-        Image(image: AssetImage('assets/images/filter.png')),
-        Image(image: AssetImage('assets/images/Notification.png')),
+        // Image(image: AssetImage('assets/images/filter.png')),
+        // Image(image: AssetImage('assets/images/Notification.png')),
       ],
     );
     return Scaffold(
@@ -115,20 +115,20 @@ class _AllBooksState extends State<AllBooks> {
                                       style: TextStyle(fontSize: 13),
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '2.3',
-                                      ),
-                                      SizedBox(
-                                        width: 3.3,
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        size: 15,
-                                      )
-                                    ],
-                                  )
+                                  // Row(
+                                  //   children: [
+                                  //     Text(
+                                  //       '2.3',
+                                  //     ),
+                                  //     SizedBox(
+                                  //       width: 3.3,
+                                  //     ),
+                                  //     Icon(
+                                  //       Icons.star,
+                                  //       size: 15,
+                                  //     )
+                                  //   ],
+                                  // )
                                 ],
                               ),
                             ),

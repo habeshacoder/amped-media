@@ -67,7 +67,7 @@ class _TopPublicationChannelsState extends State<TopPublicationChannels> {
           Container(
             margin: EdgeInsets.only(top: 13),
             // color: Colors.yellow,
-            height: 230,
+            height: 180,
             child: Consumer<ChannelCreationProvider>(
                 builder: (context, channel, child) => FutureBuilder(
                       future: channelList,
@@ -88,7 +88,7 @@ class _TopPublicationChannelsState extends State<TopPublicationChannels> {
                                     color: Colors.grey[100],
                                     borderRadius: BorderRadius.circular(5)),
                                 margin: EdgeInsets.symmetric(horizontal: 5),
-                                height: 230,
+                                height: 150,
                                 width: 132,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,40 +104,6 @@ class _TopPublicationChannelsState extends State<TopPublicationChannels> {
                                     Text(
                                       '${snapshot.data![index].name}',
                                       softWrap: true,
-                                    ),
-                                    Center(
-                                      child: Container(
-                                          height: 30,
-                                          margin: EdgeInsets.symmetric(
-                                            vertical: 2,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(
-                                                width: 2,
-                                                color: Color(0xFF00A19A)),
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          width: double.infinity,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.add,
-                                                color: Color(0xFF00A19A),
-                                              ),
-                                              Text(
-                                                'Subscribe',
-                                                style: TextStyle(
-                                                  color: Color(0xFF00A19A),
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                          // child: Text('Sign Up'),
-                                          ),
                                     ),
                                   ],
                                 ),

@@ -9,6 +9,7 @@ import 'package:ampedmedia_flutter/widget/seemore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class BookChannelDetailView extends StatefulWidget {
@@ -122,7 +123,10 @@ class _BookChannelDetailViewState extends State<BookChannelDetailView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('${widget.book.name}'),
-                                Text('${widget.book.created_at}'),
+                                Text(
+                                  '${DateFormat('dd-MM-yyyy').format(DateTime.parse('${widget.book.created_at}'))}',
+                                  softWrap: true,
+                                ),
                                 Row(
                                   children: [
                                     FutureBuilder(
@@ -159,121 +163,121 @@ class _BookChannelDetailViewState extends State<BookChannelDetailView> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 15),
                           child: Text('${widget.book.description}')),
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                      width: 1, color: Color(0xFF00A19A))),
-                              child: Center(
-                                child: TextButton.icon(
-                                  label: Text(
-                                    'Subscribe',
-                                    style: TextStyle(
-                                        color: Color(0xFF00A19A), fontSize: 14),
-                                  ),
-                                  icon: Icon(
-                                    Icons.add,
-                                    color: Color(0xFF00A19A),
-                                  ),
-                                  onPressed: () {
-                                    // Do something when the button is pressed
-                                  },
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 7,
-                            ),
-                            if (widget.book.Price != null)
-                              Text(
-                                '${widget.book.Price} Birr/Month',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            if (widget.book.Price == null)
-                              Text('price is not available')
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SearchPage()));
-                        },
-                        child: Center(
-                          child: Container(
-                            height: 35,
-                            width: MediaQuery.of(context).size.width * 0.90,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[350],
-                              border: Border.all(
-                                color: Colors.grey[300]!,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: Icon(
-                                    Icons.search,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                Text(
-                                  'search by titel, author, or topic',
-                                  softWrap: true,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black38,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   margin:
+                      //       EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      //   child: Row(
+                      //     children: [
+                      //       Container(
+                      //         height: 40,
+                      //         decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //             border: Border.all(
+                      //                 width: 1, color: Color(0xFF00A19A))),
+                      //         child: Center(
+                      //           child: TextButton.icon(
+                      //             label: Text(
+                      //               'Subscribe',
+                      //               style: TextStyle(
+                      //                   color: Color(0xFF00A19A), fontSize: 14),
+                      //             ),
+                      //             icon: Icon(
+                      //               Icons.add,
+                      //               color: Color(0xFF00A19A),
+                      //             ),
+                      //             onPressed: () {
+                      //               // Do something when the button is pressed
+                      //             },
+                      //           ),
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         width: 7,
+                      //       ),
+                      //       if (widget.book.Price != null)
+                      //         Text(
+                      //           '${widget.book.Price} Birr/Month',
+                      //           style: TextStyle(
+                      //             fontWeight: FontWeight.bold,
+                      //             fontSize: 16,
+                      //           ),
+                      //         ),
+                      //       if (widget.book.Price == null)
+                      //         Text('price is not available')
+                      //     ],
+                      //   ),
+                      // ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     Navigator.push(
+                      //         context,
+                      //         MaterialPageRoute(
+                      //             builder: (context) => const SearchPage()));
+                      //   },
+                      //   child: Center(
+                      //     child: Container(
+                      //       height: 35,
+                      //       width: MediaQuery.of(context).size.width * 0.90,
+                      //       decoration: BoxDecoration(
+                      //         color: Colors.grey[350],
+                      //         border: Border.all(
+                      //           color: Colors.grey[300]!,
+                      //           width: 1,
+                      //         ),
+                      //         borderRadius: BorderRadius.circular(25),
+                      //       ),
+                      //       child: Row(
+                      //         mainAxisAlignment: MainAxisAlignment.start,
+                      //         children: [
+                      //           Padding(
+                      //             padding: EdgeInsets.symmetric(horizontal: 10),
+                      //             child: Icon(
+                      //               Icons.search,
+                      //               color: Colors.grey,
+                      //             ),
+                      //           ),
+                      //           Text(
+                      //             'search by titel, author, or topic',
+                      //             softWrap: true,
+                      //             style: TextStyle(
+                      //               fontSize: 12,
+                      //               color: Colors.black38,
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
-                Divider(),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                  height: 50,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(5)),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Text('preview')),
-                      Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xFF00A19A),
-                              borderRadius: BorderRadius.circular(5)),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Text('buy now')),
-                    ],
-                  ),
-                ),
+                // Divider(),
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                //   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                //   height: 50,
+                //   width: double.infinity,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //     children: [
+                //       Container(
+                //           decoration: BoxDecoration(
+                //               color: Colors.grey[200],
+                //               borderRadius: BorderRadius.circular(5)),
+                //           padding: EdgeInsets.symmetric(
+                //               horizontal: 20, vertical: 10),
+                //           child: Text('preview')),
+                //       Container(
+                //           decoration: BoxDecoration(
+                //               color: Color(0xFF00A19A),
+                //               borderRadius: BorderRadius.circular(5)),
+                //           padding: EdgeInsets.symmetric(
+                //               horizontal: 20, vertical: 10),
+                //           child: Text('buy now')),
+                //     ],
+                //   ),
+                // ),
                 Divider(),
                 Consumer<Auth>(
                   builder: (context, auth, child) => Card(

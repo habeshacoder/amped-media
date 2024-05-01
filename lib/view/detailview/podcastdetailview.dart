@@ -83,21 +83,21 @@ class _PodcastDetailViewState extends State<PodcastDetailView> {
           style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.bookmark_border_outlined,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              // Add action here
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.notifications_none_sharp, color: Colors.black),
-            onPressed: () {
-              // Add action here
-            },
-          ),
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.bookmark_border_outlined,
+          //     color: Colors.black,
+          //   ),
+          //   onPressed: () {
+          //     // Add action here
+          //   },
+          // ),
+          // IconButton(
+          //   icon: Icon(Icons.notifications_none_sharp, color: Colors.black),
+          //   onPressed: () {
+          //     // Add action here
+          //   },
+          // ),
         ],
       ),
       body: Container(

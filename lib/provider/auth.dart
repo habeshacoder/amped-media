@@ -17,7 +17,7 @@ class Auth with ChangeNotifier {
   dynamic autoTimer;
   bool isLogInWithFaceBook = false;
   bool isLogInWithGoogle = false;
-  bool isFirstTime = true;
+  // bool isFirstTime = true;
   //create google sign in object
   static final _googleSignIn = GoogleSignIn(
     scopes: [
@@ -26,13 +26,10 @@ class Auth with ChangeNotifier {
   );
 
   Future<bool> get getIsfirstTime async {
+    bool isFirstTime;
     print('isfirst time.....................................................');
-    if (isFirstTime) {
-      final prefs = await SharedPreferences.getInstance();
-      isFirstTime = prefs.getBool("isFirstTime") ?? true;
-      print(
-          'isfirst time.....................................................$isFirstTime');
-    }
+    final prefs = await SharedPreferences.getInstance();
+    isFirstTime = prefs.getBool("isFirstTime") ?? true;
 
     return isFirstTime;
   }
@@ -41,12 +38,12 @@ class Auth with ChangeNotifier {
     return BackEndUrl.url;
   }
 
-  void setIsfirstTime(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    isFirstTime = false;
-    prefs.setBool("isFirstTime", false);
-    isFirstTime = value;
-  }
+  // void setIsfirstTime(bool value) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   isFirstTime = false;
+  //   prefs.setBool("isFirstTime", false);
+  //   isFirstTime = value;
+  // }
 
   bool get isAuth {
     return _token != null;
@@ -101,7 +98,7 @@ class Auth with ChangeNotifier {
         ),
       );
       final prefs = await SharedPreferences.getInstance();
-      isFirstTime = false;
+      // isFirstTime = false;
       prefs.setBool("isFirstTime", false);
       isLogInWithFaceBook = true;
       notifyListeners();
@@ -178,7 +175,7 @@ class Auth with ChangeNotifier {
       isLogInWithGoogle = true;
       notifyListeners();
       final prefs = await SharedPreferences.getInstance();
-      isFirstTime = false;
+      // isFirstTime = false;
       prefs.setBool("isFirstTime", false);
       final userData = json.encode(
         {
@@ -242,7 +239,7 @@ class Auth with ChangeNotifier {
       );
       prefs.setString('userData', userData);
       prefs.setBool("isLogInWithGoogle", true);
-      isFirstTime = false;
+      // isFirstTime = false;
       prefs.setBool("isFirstTime", false);
     } catch (error) {
       print(
@@ -288,7 +285,7 @@ class Auth with ChangeNotifier {
 
       autoUpdateAccessToken();
       final prefs = await SharedPreferences.getInstance();
-      isFirstTime = false;
+      // isFirstTime = false;
       prefs.setBool("isFirstTime", false);
       final userData = json.encode(
         {
@@ -350,7 +347,7 @@ class Auth with ChangeNotifier {
       notifyListeners();
       autoUpdateAccessToken();
       final prefs = await SharedPreferences.getInstance();
-      isFirstTime = false;
+      // isFirstTime = false;
       prefs.setBool("isFirstTime", false);
       final userData = json.encode(
         {

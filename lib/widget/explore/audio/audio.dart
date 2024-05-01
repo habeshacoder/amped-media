@@ -74,7 +74,7 @@ class _AudioState extends State<Audio> {
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
                                     headers: {},
-                                    '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].id}')),
+                                    '${BackEndUrl.url}/material/material_cover/${snapshot.data![index].material_image}')),
                           ),
                           Container(
                             padding: const EdgeInsets.only(
@@ -89,20 +89,6 @@ class _AudioState extends State<Audio> {
                                     style: TextStyle(fontSize: 13),
                                   ),
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      '2.3',
-                                    ),
-                                    SizedBox(
-                                      width: 3.3,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      size: 15,
-                                    )
-                                  ],
-                                )
                               ],
                             ),
                           ),
