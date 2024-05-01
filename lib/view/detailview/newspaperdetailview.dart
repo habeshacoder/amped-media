@@ -82,7 +82,7 @@ class _NewsPaperDetailViewState extends State<NewsPaperDetailView> {
             )),
         backgroundColor: Colors.white,
         title: Text(
-          '${widget.book.title}  Book Detail',
+          '${widget.book.title} Newspaper Detail',
           style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
@@ -236,7 +236,7 @@ class _NewsPaperDetailViewState extends State<NewsPaperDetailView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Book description', style: TextStyle(fontSize: 18)),
+                  Text('Newspaper description', style: TextStyle(fontSize: 18)),
                   SeeMoreWidget(description: '${widget.book.description}'),
                 ],
               ),

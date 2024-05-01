@@ -54,43 +54,44 @@ class WrittingReviewState extends State<WrittingReview> {
       appBar: AppBar(
         elevation: 0.7,
         leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            )),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
         backgroundColor: Colors.white,
         title: Text(
-          'Rate ${widget.book.title} ',
+          'Rate ${widget.book.title}',
           style: TextStyle(
             color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
         actions: <Widget>[
           Container(
             decoration: BoxDecoration(
-                color: Color(0xFF00A19A),
-                borderRadius: BorderRadius.circular(5)),
-            height: 20,
-            margin: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-            child: InkWell(
-              onTap: rate,
-              child: isSendingRequest
-                  ? CircularProgressIndicator()
-                  : TextButton.icon(
-                      label: Text(
+              // color: Color(0xFF00A19A),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            height: 15,
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            child: Center(
+              child: MaterialButton(
+                onPressed: isSendingRequest ? null : rate,
+                child: isSendingRequest
+                    ? CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      )
+                    : Text(
                         'Post',
                         style: TextStyle(
-                          color: Colors.white,
-                        ),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green[400]),
                       ),
-                      icon: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                      onPressed: null),
+              ),
             ),
           ),
         ],

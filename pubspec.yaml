@@ -54,13 +54,15 @@ dependencies:
   file_picker: ^6.1.1
   path: ^1.8.2
   expandable: ^5.0.1
+  flutter_launcher_icons: ^0.13.1
+  rename: ^3.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_native_splash: ^2.3.5
-
+# assets/images/ampedmedialogo.png
 # run: flutter clean && flutter pub get && flutter pub run flutter_native_splash:create
 flutter_native_splash:
   color: "00A19A"
@@ -68,7 +70,23 @@ flutter_native_splash:
   android: true
   ios: true
   fullscreen: true
-
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/ampedmedialogo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/ampedmedialogo.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/ampedmedialogo.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/ampedmedialogo.png"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

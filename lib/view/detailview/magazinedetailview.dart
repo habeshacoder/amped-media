@@ -82,7 +82,7 @@ class _MagazineDetailViewState extends State<MagazineDetailView> {
             )),
         backgroundColor: Colors.white,
         title: Text(
-          '${widget.book.title}  Book Detail',
+          '${widget.book.title} Magazine Detail',
           style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
@@ -236,7 +236,7 @@ class _MagazineDetailViewState extends State<MagazineDetailView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Book description', style: TextStyle(fontSize: 18)),
+                  Text('Magazine description', style: TextStyle(fontSize: 18)),
                   SeeMoreWidget(description: '${widget.book.description}'),
                 ],
               ),
