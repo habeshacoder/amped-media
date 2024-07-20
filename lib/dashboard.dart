@@ -1,6 +1,5 @@
 import 'package:ampedmedia_flutter/view/dashbaordscreens/explore.dart';
 import 'package:ampedmedia_flutter/view/dashbaordscreens/home.dart';
-import 'package:ampedmedia_flutter/view/dashbaordscreens/library.dart';
 import 'package:ampedmedia_flutter/view/profile_screens/profile_first_screen.dart';
 import 'package:flutter/material.dart';
 

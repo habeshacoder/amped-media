@@ -178,6 +178,7 @@ class _SignInWithEmailWidgetState extends State<SignInWithEmailWidget> {
           ),
           Center(
             child: Container(
+              
               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               decoration: BoxDecoration(
                 color: Color(0xFF00A19A),
@@ -212,6 +213,10 @@ class _SignInWithEmailWidgetState extends State<SignInWithEmailWidget> {
               ),
             ),
           ),
+
+
+
+          
         ],
       ),
     );

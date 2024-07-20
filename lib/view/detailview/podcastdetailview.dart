@@ -11,6 +11,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
+import '../../widget/report.dart';
+
 class PodcastDetailView extends StatefulWidget {
   PodcastDetailView({required this.book});
   final MaterialModel book;
@@ -216,6 +218,7 @@ class _PodcastDetailViewState extends State<PodcastDetailView> {
                   ],
                 ),
               ),
+              Report(),
               Container(
                 color: Colors.grey[200],
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),

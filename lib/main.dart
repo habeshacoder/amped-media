@@ -8,6 +8,7 @@ import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/provider/profiletypederminer.dart';
 import 'package:ampedmedia_flutter/provider/publisherprofileprovider.dart';
 import 'package:ampedmedia_flutter/provider/readerprofileprovider.dart';
+import 'package:ampedmedia_flutter/provider/report_provider.dart';
 import 'package:ampedmedia_flutter/provider/tokenhandler.dart';
 import 'package:ampedmedia_flutter/provider/podcasts.dart';
 import 'package:ampedmedia_flutter/view/onbordingview.dart';
@@ -71,6 +72,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => materialCreationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ReportProvider(),
         ),
       ],
       child: Consumer<Auth>(builder: (context, auth, child) {

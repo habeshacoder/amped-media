@@ -4,6 +4,7 @@ import 'package:ampedmedia_flutter/provider/auth.dart';
 import 'package:ampedmedia_flutter/provider/channelcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
 import 'package:ampedmedia_flutter/view/SearchPage.dart';
+import 'package:ampedmedia_flutter/widget/report.dart';
 import 'package:ampedmedia_flutter/widget/reviewchannel.dart';
 import 'package:ampedmedia_flutter/widget/seemore.dart';
 import 'package:flutter/material.dart';
@@ -279,6 +280,7 @@ class _BookChannelDetailViewState extends State<BookChannelDetailView> {
                 //   ),
                 // ),
                 Divider(),
+                Report(),
                 Consumer<Auth>(
                   builder: (context, auth, child) => Card(
                     margin: EdgeInsets.symmetric(horizontal: 10),

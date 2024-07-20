@@ -12,6 +12,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../widget/report.dart';
+
 class AudioBookDetail extends StatefulWidget {
   AudioBookDetail({required this.book});
   final MaterialModel book;
@@ -236,6 +238,7 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
                 ],
               ),
             ),
+            Report(),
             Container(
               color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),

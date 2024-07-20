@@ -4,6 +4,7 @@ import 'package:ampedmedia_flutter/provider/auth.dart';
 import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
 import 'package:ampedmedia_flutter/widget/morefromauthor.dart';
+import 'package:ampedmedia_flutter/widget/report.dart';
 import 'package:ampedmedia_flutter/widget/seemore.dart';
 import 'package:ampedmedia_flutter/widget/writingreview.dart';
 import 'package:flutter/material.dart';
@@ -228,6 +229,7 @@ class _MagazineDetailViewState extends State<MagazineDetailView> {
                 ],
               ),
             ),
+            Report(),
             Container(
               color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),

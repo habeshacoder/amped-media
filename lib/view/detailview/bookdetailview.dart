@@ -4,6 +4,7 @@ import 'package:ampedmedia_flutter/provider/auth.dart';
 import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
 import 'package:ampedmedia_flutter/widget/morefromauthor.dart';
+import 'package:ampedmedia_flutter/widget/report.dart';
 import 'package:ampedmedia_flutter/widget/seemore.dart';
 import 'package:ampedmedia_flutter/widget/writingreview.dart';
 import 'package:flutter/material.dart';
@@ -165,7 +166,7 @@ class _BookDetailViewState extends State<BookDetailView> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+              margin: EdgeInsets.only(left: 10, top: 5),
               padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               color: Colors.grey[300],
               height: 100,
@@ -228,9 +229,10 @@ class _BookDetailViewState extends State<BookDetailView> {
                 ],
               ),
             ),
+            Report(),
             Container(
               color: Colors.grey[200],
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+              margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               width: double.infinity,
               child: Column(
