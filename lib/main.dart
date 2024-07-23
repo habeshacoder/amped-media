@@ -2,6 +2,7 @@ import 'package:ampedmedia_flutter/dashboard.dart';
 import 'package:ampedmedia_flutter/provider/audiobooks.dart';
 import 'package:ampedmedia_flutter/provider/auth.dart';
 import 'package:ampedmedia_flutter/provider/books.dart';
+import 'package:ampedmedia_flutter/provider/buy_provider.dart';
 import 'package:ampedmedia_flutter/provider/channelcreationprovider.dart';
 import 'package:ampedmedia_flutter/provider/channels.dart';
 import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
@@ -75,6 +76,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ReportProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BuyProvider(),
         ),
       ],
       child: Consumer<Auth>(builder: (context, auth, child) {

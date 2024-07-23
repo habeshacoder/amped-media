@@ -3,6 +3,7 @@ import 'package:ampedmedia_flutter/model/rate.dart';
 import 'package:ampedmedia_flutter/provider/auth.dart';
 import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
+import 'package:ampedmedia_flutter/view/payment/buy.dart';
 import 'package:ampedmedia_flutter/widget/morefromauthor.dart';
 import 'package:ampedmedia_flutter/widget/report.dart';
 import 'package:ampedmedia_flutter/widget/seemore.dart';
@@ -229,7 +230,18 @@ class _BookDetailViewState extends State<BookDetailView> {
                 ],
               ),
             ),
-            Report(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Buy(),
+                  Report(
+                    material_id: widget.book.id,
+                  ),
+                ],
+              ),
+            ),
             Container(
               color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 10),
@@ -277,32 +289,6 @@ class _BookDetailViewState extends State<BookDetailView> {
                 ],
               ),
             ),
-            // Divider(),
-            // Container(
-            //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-            //   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            //   height: 50,
-            //   width: double.infinity,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //     children: [
-            //       Container(
-            //           decoration: BoxDecoration(
-            //               color: Colors.grey[200],
-            //               borderRadius: BorderRadius.circular(5)),
-            //           padding:
-            //               EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            //           child: Text('preview')),
-            //       Container(
-            //           decoration: BoxDecoration(
-            //               color: Color(0xFF00A19A),
-            //               borderRadius: BorderRadius.circular(5)),
-            //           padding:
-            //               EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            //           child: Text('buy now')),
-            //     ],
-            //   ),
-            // ),
             Divider(),
             Consumer<Auth>(
               builder: (context, auth, child) => Card(

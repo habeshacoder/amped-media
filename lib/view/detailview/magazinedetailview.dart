@@ -229,7 +229,9 @@ class _MagazineDetailViewState extends State<MagazineDetailView> {
                 ],
               ),
             ),
-            Report(),
+            Report(
+              material_id: widget.book.id,
+            ),
             Container(
               color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),

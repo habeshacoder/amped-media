@@ -178,7 +178,6 @@ class _SignInWithEmailWidgetState extends State<SignInWithEmailWidget> {
           ),
           Center(
             child: Container(
-              
               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               decoration: BoxDecoration(
                 color: Color(0xFF00A19A),
@@ -196,27 +195,23 @@ class _SignInWithEmailWidgetState extends State<SignInWithEmailWidget> {
               // child: Text('Sign Up'),
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 13),
-            width: double.infinity,
-            child: Center(
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ResetPassword(),
-                  ));
-                },
-                child: Text(
-                  'Reset Password',
-                  style: TextStyle(color: Color(0xFF00A19A)),
-                ),
-              ),
-            ),
-          ),
-
-
-
-          
+          // Container(
+          //   margin: EdgeInsets.symmetric(vertical: 13),
+          //   width: double.infinity,
+          //   child: Center(
+          //     child: InkWell(
+          //       onTap: () {
+          //         Navigator.of(context).push(MaterialPageRoute(
+          //           builder: (context) => ResetPassword(),
+          //         ));
+          //       },
+          //       child: Text(
+          //         'Reset Password',
+          //         style: TextStyle(color: Color(0xFF00A19A)),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -240,7 +235,6 @@ class _SignInWithEmailWidgetState extends State<SignInWithEmailWidget> {
     } on HttpException catch (error) {
       print(error);
       print('.....................err');
-
       var errorMessage = 'authenticate faild';
       if (error.toString().contains('EMAIL_EXISTS')) {
         errorMessage = 'this email address is already in use';

@@ -143,22 +143,13 @@ class _ReportState extends State<Report> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      padding: EdgeInsets.symmetric(horizontal: 5),
+    return TextButton(
+      onPressed: _showReportOptionsBottomSheet,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          TextButton(
-            onPressed: _showReportOptionsBottomSheet,
-            child: Row(
-              children: [
-                Icon(Icons.report, size: 24.0, color: Colors.green),
-                SizedBox(width: 8.0),
-                Text('Report', style: TextStyle(fontSize: 18)),
-              ],
-            ),
-          ),
+          Icon(Icons.report, size: 24.0, color: Colors.green),
+          SizedBox(width: 8.0),
+          Text('Report', style: TextStyle(fontSize: 18)),
         ],
       ),
     );
