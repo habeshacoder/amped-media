@@ -235,7 +235,9 @@ class _BookDetailViewState extends State<BookDetailView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Buy(),
+                  Buy(
+                    material: widget.book,
+                  ),
                   Report(
                     material_id: widget.book.id,
                   ),

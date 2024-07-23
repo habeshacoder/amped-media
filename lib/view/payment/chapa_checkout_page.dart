@@ -24,26 +24,25 @@ class _ChapaCheckoutPageState extends State<ChapaCheckoutPage> {
         onWebViewCreated: (InAppWebViewController controller) {
           _webViewController = controller;
         },
-        // shouldOverrideUrlLoading: (controller, navigationAction) async {
-        //   final uri = navigationAction.request.url;
-        //   print('url-----------------------------------------$uri');
-        //   if (uri != null &&
-        //       (uri.toString().startsWith('https://example.com/success') ||
-        //           uri.toString().startsWith('https://example.com/failure'))) {
-        //     // Handle navigation events here, such as successful payment completion
-        //     if (uri.toString().startsWith('https://example.com/success')) {
-        //       // Payment successful, navigate to a success page
-        //       Navigator.pushNamed(context, '/success');
-        //     } else if (uri
-        //         .toString()
-        //         .startsWith('https://example.com/failure')) {
-        //       // Payment failed, navigate to a failure page
-        //       Navigator.pushNamed(context, '/failure');
-        //     }
-        //     return NavigationActionPolicy.CANCEL;
-        //   }
-        //   return NavigationActionPolicy.ALLOW;
-        // },
+        shouldOverrideUrlLoading: (controller, navigationAction) async {
+          final uri = navigationAction.request.url;
+          if (uri != null &&
+              (uri.toString().startsWith('https://example.com/success') ||
+                  uri.toString().startsWith('https://example.com/failure'))) {
+// Handle navigation events here, such as successful payment completion
+            if (uri.toString().startsWith('https://example.com/success')) {
+// Payment successful, navigate to a success page
+              Navigator.pushNamed(context, '/success');
+            } else if (uri
+                .toString()
+                .startsWith('https://example.com/failure')) {
+// Payment failed, navigate to a failure page
+              Navigator.pushNamed(context, '/failure');
+            }
+            return NavigationActionPolicy.CANCEL;
+          }
+          return NavigationActionPolicy.ALLOW;
+        },
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:ampedmedia_flutter/model/rate.dart';
 import 'package:ampedmedia_flutter/provider/auth.dart';
 import 'package:ampedmedia_flutter/provider/materialcreationprovider.dart';
 import 'package:ampedmedia_flutter/url.dart';
+import 'package:ampedmedia_flutter/view/payment/buy.dart';
 import 'package:ampedmedia_flutter/widget/morefromauthor.dart';
 import 'package:ampedmedia_flutter/widget/seemore.dart';
 import 'package:ampedmedia_flutter/widget/writingreview.dart';
@@ -238,8 +239,19 @@ class _AudioBookDetailState extends State<AudioBookDetail> {
                 ],
               ),
             ),
-            Report(
-              material_id: widget.book.id,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Buy(
+                    material: widget.book,
+                  ),
+                  Report(
+                    material_id: widget.book.id,
+                  ),
+                ],
+              ),
             ),
             Container(
               color: Colors.grey[200],

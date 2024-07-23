@@ -53,30 +53,30 @@ class _ProfileImgaeUploadState extends State<ProfileImgaeUpload> {
 
         final imageFileFormate = File(imagePath);
         //extention formate validation
-        final isPngOrJpg = ['.png', '.jpg', '.jpeg']
-            .any((extension) => imagePath.toLowerCase().endsWith(extension));
-        if (!isPngOrJpg) {
-          print('File must be in PNG or JPG format');
-          setState(() {
-            pngFormateCheck = 'File must be in PNG or JPG format';
-          });
-          return;
-        }
-        // Handle size
-        final fileSize = await imageFileFormate.length();
-        if (fileSize >= 1000000) {
-          print('File size must be less than 1MB');
-          setState(() {
-            sizeCheck = 'File size must be less than 1MB';
-          });
-          return;
-        }
+        // final isPngOrJpg = ['.png', '.jpg', '.jpeg']
+        //     .any((extension) => imagePath.toLowerCase().endsWith(extension));
+        // if (!isPngOrJpg) {
+        //   print('File must be in PNG or JPG format');
+        //   setState(() {
+        //     pngFormateCheck = 'File must be in PNG or JPG format';
+        //   });
+        //   return;
+        // }
+        // // Handle size
+        // final fileSize = await imageFileFormate.length();
+        // if (fileSize >= 1000000) {
+        //   print('File size must be less than 1MB');
+        //   setState(() {
+        //     sizeCheck = 'File size must be less than 1MB';
+        //   });
+        //   return;
+        // }
 
         //update value
         setState(() {
-          sizeCheck=null;
-          dimensionCheck=null;
-          pngFormateCheck=null;
+          sizeCheck = null;
+          dimensionCheck = null;
+          pngFormateCheck = null;
           loadedImageUrl = path.basename(imagePath);
           imageUrl = imageFileFormate;
         });

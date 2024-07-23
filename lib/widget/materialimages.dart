@@ -67,33 +67,33 @@ class _MaterialImagesState extends State<MaterialImages> {
         }
 
         // Handle size
-        final fileSize = await imageFileFormate.length();
-        if (fileSize >= 1000000) {
-          print('File size must be less than 1MB');
-          setState(() {
-            sizeCheck = 'File size must be less than 1MB';
-          });
-          return;
-        }
+        // final fileSize = await imageFileFormate.length();
+        // if (fileSize >= 1000000) {
+        //   print('File size must be less than 1MB');
+        //   setState(() {
+        //     sizeCheck = 'File size must be less than 1MB';
+        //   });
+        //   return;
+        // }
         //check the demenstion
-        final image = Image.file(File(imagePath));
+        // final image = Image.file(File(imagePath));
 
-        final completer = Completer<ImageInfo>();
-        image.image.resolve(ImageConfiguration()).addListener(
-          ImageStreamListener((ImageInfo info, bool _) {
-            completer.complete(info);
-          }),
-        );
-        final info = await completer.future;
-        final width = info.image.width;
-        final height = info.image.height;
-        if (width != 1920 || height != 1080) {
-          print('${width} ${height}');
-          setState(() {
-            dimensionCheck = 'image dimensions must be 1920 x 1080';
-          });
-          return;
-        }
+        // final completer = Completer<ImageInfo>();
+        // image.image.resolve(ImageConfiguration()).addListener(
+        //   ImageStreamListener((ImageInfo info, bool _) {
+        //     completer.complete(info);
+        //   }),
+        // );
+        // final info = await completer.future;
+        // final width = info.image.width;
+        // final height = info.image.height;
+        // if (width != 1920 || height != 1080) {
+        //   print('${width} ${height}');
+        //   setState(() {
+        //     dimensionCheck = 'image dimensions must be 1920 x 1080';
+        //   });
+        //   return;
+        // }
 
         //update value
         setState(() {

@@ -43,9 +43,9 @@ class _ReportState extends State<Report> {
               ),
               SizedBox(height: 16.0),
               ...[
-                {'label': 'Hate Speech', 'icon': Icons.report_problem},
-                {'label': 'Gender Violation', 'icon': Icons.person_remove},
-                {'label': 'Inappropriate Age Range', 'icon': Icons.person},
+                {'label': 'HateSpeech', 'icon': Icons.report_problem},
+                {'label': 'GenderViolation', 'icon': Icons.person_remove},
+                {'label': 'InappropriateAgeRange', 'icon': Icons.person},
                 {'label': 'Stereotype', 'icon': Icons.group_add},
                 {'label': 'Discrimination', 'icon': Icons.remove_circle},
                 {'label': 'Unspecified', 'icon': Icons.report}
@@ -176,8 +176,8 @@ class _ReportState extends State<Report> {
     final reportData = {
       "report_type": _selectedOption,
       "report_desc": _reportDetailsController.text,
-      "material_id": widget.channel_id,
-      "channel_id": widget.material_id,
+      "material_id": widget.material_id,
+      "channel_id": widget.channel_id,
     };
     print(reportData.entries);
     try {

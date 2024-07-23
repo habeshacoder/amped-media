@@ -1,12 +1,16 @@
 import 'package:ampedmedia_flutter/provider/buy_provider.dart';
+import 'package:ampedmedia_flutter/provider/verify_txs.dart';
 import 'package:ampedmedia_flutter/view/payment/chapa_checkout_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/auth.dart';
 
 class Buy extends StatefulWidget {
-  const Buy({super.key});
+  final material;
+
+  const Buy({super.key, required this.material});
 
   @override
   State<Buy> createState() => _BuyState();
@@ -16,21 +20,23 @@ class _BuyState extends State<Buy> {
   bool isSubmitingForm = false;
   final _formKey = GlobalKey<FormState>();
 
-  String _firstName = 'abc';
-  String _lastName = 'def';
-  String _email = 'abcdef@gmail.com';
-  String _phoneNo = '0912345678';
+  String _firstName = '';
+  String _lastName = '';
+  String _email = '';
+  String _phoneNo = '';
   String _currency = 'ETB';
-  List<int> _material = [];
+  int _material = 0;
   double _price = 260.0;
   double _tax = 0.0;
   double _total = 0.0;
 
   @override
   void initState() {
-    super.initState();
+    _material = widget.material.id;
+    _price = double.parse(widget.material.price.toString());
     _tax = _price * 0.05;
-    _total = _price + _tax;
+    _total = _tax + _price;
+    super.initState();
   }
 
   @override
@@ -217,9 +223,6 @@ class _BuyState extends State<Buy> {
                     SizedBox(height: 10.0),
                     TextFormField(
                       initialValue: _price.toString(),
-                      // decoration: InputDecoration(
-                      //   labelText: 'Price',
-                      // ),
                       decoration: InputDecoration(
                         errorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.red, width: 1),
@@ -297,10 +300,10 @@ class _BuyState extends State<Buy> {
                         child: Text('Buy Now'),
                         onPressed: () {
                           if (!_formKey.currentState!.validate()) {
-                            _formKey.currentState!.save();
                             print('/////////////////////////invalid form');
                             return;
                           }
+                          _formKey.currentState!.save();
                           print('/////////////////////////');
                           final Map<String, dynamic> paymentData = {
                             "first_name": _firstName,
@@ -311,7 +314,7 @@ class _BuyState extends State<Buy> {
                             "price": _price,
                             "tax": _tax,
                             "total": _total,
-                            "material": [0],
+                            "material": _material,
                           };
                           sendPaymentData(paymentData);
                         },
@@ -356,12 +359,19 @@ class _BuyState extends State<Buy> {
           ),
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('you have successfully send payment:$checkout_Url'),
+      print(
+          '------------------------------------------- verification should be done here');
+      try {
+        final response =
+            await Provider.of<VerifyTXSProvider>(context, listen: false)
+                .verifyPayment(token);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(response),
           duration: Duration(seconds: 3),
-        ),
-      );
+        ));
+      } catch (error) {
+        throw error;
+      }
     } catch (error) {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(

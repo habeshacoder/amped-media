@@ -12,6 +12,7 @@ import 'package:ampedmedia_flutter/provider/readerprofileprovider.dart';
 import 'package:ampedmedia_flutter/provider/report_provider.dart';
 import 'package:ampedmedia_flutter/provider/tokenhandler.dart';
 import 'package:ampedmedia_flutter/provider/podcasts.dart';
+import 'package:ampedmedia_flutter/provider/verify_txs.dart';
 import 'package:ampedmedia_flutter/view/onbordingview.dart';
 import 'package:ampedmedia_flutter/view/profile/chooseprofile.dart';
 import 'package:ampedmedia_flutter/view/profile/createprofile.dart';
@@ -79,6 +80,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => BuyProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => VerifyTXSProvider(),
         ),
       ],
       child: Consumer<Auth>(builder: (context, auth, child) {

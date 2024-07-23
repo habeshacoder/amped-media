@@ -55,17 +55,17 @@ class _MaterialFileState extends State<MaterialFile> {
       double fileSizeInMB = fileSizeInBytes / (1024 * 1024);
       String fileExtension = path.extension(file.path);
       //check the extension
-      if (fileExtension != '.wav' &&
-          fileExtension != '.mp3' &&
-          fileExtension != '.epub') {
-        print('invalid extension');
-        return;
-      }
+      // if (fileExtension != '.wav' &&
+      //     fileExtension != '.mp3' &&
+      //     fileExtension != '.epub') {
+      //   print('invalid extension');
+      //   return;
+      // }
       //check the size
-      if (fileSizeInMB > 1000) {
-        print('size is big');
-        return;
-      }
+      // if (fileSizeInMB > 1000) {
+      //   print('size is big');
+      //   return;
+      // }
       setState(() {
         loadedPreviewFile = path.basename(file.toString());
       });
