@@ -63,6 +63,7 @@ class materialCreationProvider with ChangeNotifier {
               : materialCreationData['first_published_at'].toString(),
         }),
       );
+
       print(
         'response after http.post:..................................' +
             response.body,
@@ -481,5 +482,62 @@ class materialCreationProvider with ChangeNotifier {
     }
 
     return Iscontinue;
+  }
+
+  Future<List<MaterialModel>> getMaterialPaidMaterials(String? token) async {
+    if (token == null) {
+      print('------------token null');
+      return [];
+    }
+    final baseUrl = BackEndUrl.url;
+    final url = '$baseUrl/material/purchased/user-materials';
+    final response = await http.get(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${token}',
+      },
+    );
+    print('-----------------------------paidmaterial${response.body}');
+    List<MaterialModel> loadedMaterials = [];
+    final extractedResponse = json.decode(response.body);
+    try {
+      extractedResponse.forEach((mat) {
+        loadedMaterials.add(MaterialModel.fromJson(mat));
+      });
+    } catch (error) {
+      throw error;
+    }
+    print('loaded mat paid--------------------$loadedMaterials');
+    return loadedMaterials;
+  }
+
+  Future<List<MaterialModel>> getSellerMaterials(String? token) async {
+    if (token == null) {
+      print('------------token null');
+      return [];
+    }
+    List<MaterialModel> loadedMaterials = [];
+    final baseUrl = BackEndUrl.url;
+    final url = '$baseUrl/material/seller_materials';
+    final extractedResponse;
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${token}',
+        },
+      );
+      print('----------------------allsellermat${response.body}');
+      extractedResponse = json.decode(response.body);
+      extractedResponse.forEach((mat) {
+        loadedMaterials.add(MaterialModel.fromJson(mat));
+      });
+    } catch (err) {
+      print(err);
+    }
+    print('loaded my materials--------------------$loadedMaterials');
+    return loadedMaterials;
   }
 }

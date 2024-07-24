@@ -77,7 +77,6 @@ class _PopularMagazinesState extends State<PopularMagazines> {
                 builder: (context, material, child) => FutureBuilder(
                       future: materialFetched,
                       builder: (context, snapshot) {
-                        print('material fetched:......:');
                         print(materialFetched);
                         if (snapshot.hasData) {
                           return ListView.builder(

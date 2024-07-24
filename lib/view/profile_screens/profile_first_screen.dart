@@ -5,6 +5,7 @@ import 'package:ampedmedia_flutter/view/creatematerial.dart/creatematerial.dart'
 import 'package:ampedmedia_flutter/view/profile/edit_seller_profile.dart';
 import 'package:ampedmedia_flutter/view/profile/edituserprofile.dart';
 import 'package:ampedmedia_flutter/view/profile/chooseprofile.dart';
+import 'package:ampedmedia_flutter/view/profile_screens/mydashboard.dart';
 import 'package:ampedmedia_flutter/view/profile_screens/faq_screen.dart';
 import 'package:ampedmedia_flutter/view/seller_profile_dashboard.dart';
 import 'package:ampedmedia_flutter/view/signinup.dart';
@@ -176,6 +177,14 @@ class _UserProfileState extends State<UserProfile> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => ChooseProfile(),
+                        ));
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Dashboard'),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Mydashboard(),
                         ));
                       },
                     ),

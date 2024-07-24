@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/auth.dart';
+import '../profile_screens/mydashboard.dart';
 
 class Buy extends StatefulWidget {
   final material;
@@ -365,9 +366,12 @@ class _BuyState extends State<Buy> {
         final response =
             await Provider.of<VerifyTXSProvider>(context, listen: false)
                 .verifyPayment(token);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(response),
-          duration: Duration(seconds: 3),
+        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //   content: Text(response),
+        //   duration: Duration(seconds: 3),
+        // ));
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Mydashboard(),
         ));
       } catch (error) {
         throw error;
